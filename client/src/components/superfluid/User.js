@@ -150,16 +150,60 @@ async function approveTokens(amount) {
 }
 
 const SuperTokens = () => {
+  var [gradeFlag, setGradeFlag] = useState(false);
   return (
-    <div className="flex place-content-center">
+    <div className="flex place-content-center pt-20 ">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
-        <figure>image is here</figure>
         <div className="card-body">
-          <h2 className="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <div className="card-actions justify-start">
+            <button
+              className={`btn ${gradeFlag || "btn-outline"} btn-primary`}
+              onClick={() => setGradeFlag(true)}
+            >
+              Upgrade
+            </button>
+            <button
+              className={`btn ${gradeFlag && "btn-outline"} btn-primary`}
+              onClick={() => setGradeFlag(false)}
+            >
+              Downgrade
+            </button>
           </div>
+          {/* input start from here */}
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text-primary">
+                {" "}
+                current {gradeFlag ? "matic" : "maticx"} balace is :
+              </span>
+            </label>{" "}
+            <div className="input-group pb-2">
+              <input
+                type="text"
+                placeholder="0.01"
+                className="input input-primary"
+              />
+              <button className="btn btn-primary">
+                {gradeFlag ? "matic" : "maticx"}
+              </button>
+            </div>
+            <div className="flex justify-center pb-2">to</div>
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="0.01"
+                className="input input-primary"
+              />
+              <button className="btn btn-primary">
+                {gradeFlag ? "maticx" : "matic"}
+              </button>
+            </div>
+          </div>
+
+          <button className="btn btn-primary pt-3">
+            {gradeFlag ? "upgarade" : "downgrade"}
+          </button>
         </div>
       </div>
     </div>
