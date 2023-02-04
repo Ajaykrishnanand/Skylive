@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Login from "./Login";
 const Navbar =()=>{
   const [visible,setVisible] = useState(false)
   function changebehave(){ 
@@ -16,7 +16,7 @@ const Navbar =()=>{
     <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
   <div className="drawer-content flex flex-col">
  
-    <div className="w-full navbar fixed bg-base-300">
+    <div className="w-full navbar  border-white border-b-2 fixed bg-base-300">
       <div className="flex-none">
      
         <label htmlFor="my-drawer-3" onClick={changebehave} className="btn btn-square btn-ghost">
@@ -30,20 +30,20 @@ const Navbar =()=>{
       <div className="flex-none  lg:block">
         <ul className="menu menu-horizontal">
       
-          <li><a className="text-lg">login</a></li>
-          <li><a>profile</a></li>
+         
+          <li><a><Login/> </a></li>
         </ul>
       </div>
     </div>
 
 
   </div>
-{(visible==true)&&(<div className="drawer-side   pt-[70px] ">
+{(visible==true)&&(<div className="drawer-side   pt-[90px] ">
   <label htmlFor="my-drawer-3" className=""></label> 
-  <ul className="menu p-4 fixed h-full bg-white w-80 ">
+  <ul className="menu bg-base-300 fixed border-r-2 border-white h-full w-80 ">
     
-    <li><a  className="ring-2 ring-cyan-300">profile</a></li>
-    <li><a>username</a></li>
+    <li className="p-10"><a  className="ring-2 ring-white rounded-xl">profile</a></li>
+    <li className="p-10"><a className="ring-2 ring-white rounded-xl">username</a></li>
     
   </ul>
   
