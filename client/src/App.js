@@ -2,6 +2,7 @@ import { Auth, useAuth } from "@arcana/auth-react";
 import { AuthProvider } from "@arcana/auth";
 import { ProvideAuth } from "@arcana/auth-react";
 import User from "./components/superfluid/User";
+import Navbar from "./component/pages/navbar";
 const provider = new AuthProvider("b373797fae6275c96ac63108a0733bf78ac1863f");
 const onLogin = () => {
   // external wallet
@@ -10,6 +11,7 @@ const onLogin = () => {
 function App() {
   return (
     <div>
+      <Navbar/>
       <User />
     </div>
     // <ProvideAuth provider={provider}>
