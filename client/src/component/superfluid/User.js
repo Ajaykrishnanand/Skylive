@@ -7,6 +7,7 @@ import { ethers } from "ethers";
 
 let account;
 
+alert("hello");
 //where the Superfluid logic takes place
 async function upgradeTokens(amount) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
