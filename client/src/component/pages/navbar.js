@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Login from "./Login";
+import { Link } from "react-router-dom";
+import Path from "../routes/path";
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
 
   return (
     <>
-      |
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
@@ -44,7 +45,16 @@ const Navbar = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex-1 px-2 mx-2">Skylive</div>
+            <div className="flex-1 px-2 mx-2">
+              <Link
+                style={{ marginRight: "20px" }}
+                exact
+                className="nav-link "
+                to="/"
+              >
+                SKYLINK
+              </Link>
+            </div>
             <div className="form-control  flex-1 pr-[610px]">
               <input
                 type="text"
@@ -63,15 +73,40 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
         {visible == true && (
           <div className="drawer-side   pt-[90px] ">
             <label htmlFor="my-drawer-3" className=""></label>
-            <ul className="menu bg-base-400 fixed border-r-2 border-white h-full w-80 ">
-              <li className="p-10">
-                <a className="ring-2 ring-white rounded-xl">profile</a>
+            <ul className="menu bg-base-150 fixed border-r-2 border-white h-full w-80 ">
+              <li className="p-3">
+                <Link
+                  style={{ marginRight: "20px" }}
+                  exact
+                  className="ring-1 ring-white rounded-xl"
+                  to="/user"
+                >
+                  Profile
+                </Link>
               </li>
-              <li className="p-10">
-                <a className="ring-2 ring-white rounded-xl">username</a>
+              <li className="p-3">
+                <Link
+                  style={{ marginRight: "20px" }}
+                  exact
+                  className="ring-1 ring-white rounded-xl"
+                  to="/user"
+                >
+                  Channel
+                </Link>
+              </li>
+              <li className="p-3">
+                <Link
+                  style={{ marginRight: "20px" }}
+                  exact
+                  className="ring-1 ring-white rounded-xl"
+                  to="/user"
+                >
+                  SWAP
+                </Link>
               </li>
             </ul>
           </div>

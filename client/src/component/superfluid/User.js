@@ -7,7 +7,6 @@ import { ethers } from "ethers";
 
 let account;
 
-alert("hello");
 //where the Superfluid logic takes place
 async function upgradeTokens(amount) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -153,7 +152,7 @@ async function approveTokens(amount) {
 const SuperTokens = () => {
   var [gradeFlag, setGradeFlag] = useState(false);
   return (
-    <div className="flex place-content-center pt-20 ">
+    <div className="flex place-content-center  ">
       <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <div className="card-body">
           <div className="card-actions justify-start">
