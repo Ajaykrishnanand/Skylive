@@ -12,6 +12,7 @@ const Wrapper = (props) => {
     signer: null,
     accountAddress: null,
   });
+  const [sidebar,setSidebar] = useState(false);
  
   function setData(provider, signer, accountAddress) {
     setAcclogin((prevState) => {
@@ -26,6 +27,8 @@ const Wrapper = (props) => {
  
     setData,
     acclogin,
+    sidebar,
+    setSidebar
    
 
   };

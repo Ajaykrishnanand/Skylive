@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState , useContext } from "react";
 import Login from "./Login";
 import { Link } from "react-router-dom";
 import Path from "../routes/path";
+import { accContext } from "../context/useContext";
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
 
+    const ctx = useContext(accContext);
+    const visible = ctx.sharedState.sidebar;
+    const setVisible = ctx.sharedState.setSidebar;
   return (
     <>
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
-          <div className="w-full navbar   border-white border-b-2 fixed bg-base-300">
+          <div className="w-full navbar flex justify-between border-white border-b-2 fixed bg-base-300">
+          <div>
             <div className="flex-none">
               <button
                 className="btn btn-circle swap swap-rotate"
@@ -45,24 +49,28 @@ const Navbar = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex-1 px-2 mx-2">
+           
+
+           
+            <div className=" px-2 mx-2">
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="nav-link "
+                className="nav-link font-bold text-3xl "
                 to="/"
               >
-                SKYLINK
+                Skylive.tv
               </Link>
             </div>
-            <div className="form-control  flex-1 pr-[610px]">
+            </div>
+            <div className="form-control    ">
               <input
                 type="text"
                 placeholder="Search"
-                className="input input-primary "
+                className="input input-primary   w-[40rem] border-2 rounded-full   "
               />
             </div>
-            <div className="flex-none  lg:block">
+            <div className="  lg:block">
               <ul className="menu menu-horizontal">
                 <li>
                   <a>
@@ -71,48 +79,14 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
+            </div>
           </div>
         </div>
 
-        {visible == true && (
-          <div className="drawer-side   pt-[90px] ">
-            <label htmlFor="my-drawer-3" className=""></label>
-            <ul className="menu bg-base-150 fixed border-r-2 border-white h-full w-80 ">
-              <li className="p-3">
-                <Link
-                  style={{ marginRight: "20px" }}
-                  exact
-                  className="ring-1 ring-white rounded-xl"
-                  to="/user"
-                >
-                  Profile
-                </Link>
-              </li>
-              <li className="p-3">
-                <Link
-                  style={{ marginRight: "20px" }}
-                  exact
-                  className="ring-1 ring-white rounded-xl"
-                  to="/user"
-                >
-                  Channel
-                </Link>
-              </li>
-              <li className="p-3">
-                <Link
-                  style={{ marginRight: "20px" }}
-                  exact
-                  className="ring-1 ring-white rounded-xl"
-                  to="/user"
-                >
-                  SWAP
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )}
-      </div>
+       
+     
     </>
   );
 };
 export default Navbar;
+

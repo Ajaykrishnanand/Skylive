@@ -152,8 +152,8 @@ async function approveTokens(amount) {
 const SuperTokens = () => {
   var [gradeFlag, setGradeFlag] = useState(false);
   return (
-    <div className="flex place-content-center  ">
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="flex items-center pl-[32rem]  ">
+      <div className="card card-compact w-96  bg-base-100 shadow-xl">
         <div className="card-body">
           <div className="card-actions justify-start">
             <button

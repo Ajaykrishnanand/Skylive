@@ -14,3 +14,11 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer {
+  display: grid;
+  width: 15%;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
