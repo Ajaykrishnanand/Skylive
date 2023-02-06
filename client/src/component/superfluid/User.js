@@ -1,155 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Framework } from "@superfluid-finance/sdk-core";
+import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { daiABI } from "./ABI";
-
-import { ethers } from "ethers";
-
-let account;
-
-//where the Superfluid logic takes place
-async function upgradeTokens(amount) {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts", []);
-
-  const signer = provider.getSigner();
-
-  const chainId = await window.ethereum.request({ method: "eth_chainId" });
-  const sf = await Framework.create({
-    chainId: Number(chainId),
-    provider: provider,
-  });
-
-  const superSigner = sf.createSigner({ signer: signer });
-
-  console.log(signer);
-  console.log(await superSigner.getAddress());
-  const daix = await sf.loadSuperToken("fDAIx");
-
-  console.log(daix);
-
-  try {
-    const upgradeOperation = daix.upgrade({
-      amount: amount,
-    });
-
-    console.log("Upgrading...");
-
-    await upgradeOperation.exec(signer);
-
-    console.log(
-      `Congrats - you've just upgraded your tokens to an Index!
-         Network: Goerli
-         Super Token: DAIx
-         Amount: ${amount}         
-      `
-    );
-
-    console.log(
-      `Congrats - you've just distributed to your index!
-    `
-    );
-  } catch (error) {
-    console.log(
-      "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
-    );
-    console.error(error);
-  }
-}
-
-//where the Superfluid logic takes place
-async function downgradeTokens(amount) {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts", []);
-
-  const signer = provider.getSigner();
-
-  const chainId = await window.ethereum.request({ method: "eth_chainId" });
-  const sf = await Framework.create({
-    chainId: Number(chainId),
-    provider: provider,
-  });
-
-  const superSigner = sf.createSigner({ signer: signer });
-
-  console.log(signer);
-  console.log(await superSigner.getAddress());
-  const daix = await sf.loadSuperToken("fDAIx");
-
-  console.log(daix);
-
-  try {
-    const downgradeOperation = daix.downgrade({
-      amount: amount,
-    });
-
-    console.log("downgrading...");
-
-    await downgradeOperation.exec(signer);
-
-    console.log(
-      `Congrats - you've just downgraded your tokens
-         Network: Goerli
-         Super Token: DAIx
-         Amount: ${amount}         
-      `
-    );
-
-    console.log(
-      `Congrats - you've just downgraded
-    `
-    );
-  } catch (error) {
-    console.log(
-      "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
-    );
-    console.error(error);
-  }
-}
-
-async function approveTokens(amount) {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  await provider.send("eth_requestAccounts", []);
-
-  const signer = provider.getSigner();
-
-  const chainId = await window.ethereum.request({ method: "eth_chainId" });
-  const sf = await Framework.create({
-    chainId: Number(chainId),
-    provider: provider,
-  });
-
-  const superSigner = sf.createSigner({ signer: signer });
-
-  console.log(signer);
-  console.log(await superSigner.getAddress());
-
-  //fDAI on goerli: you can find network addresses here: https://docs.superfluid.finance/superfluid/developers/networks
-  //note that this abi is the one found here: https://goerli.etherscan.io/address/0x88271d333C72e51516B67f5567c728E702b3eeE8
-  const DAI = new ethers.Contract(
-    "0x88271d333C72e51516B67f5567c728E702b3eeE8",
-    daiABI,
-    signer
-  );
-  try {
-    console.log("approving DAI spend");
-    await DAI.approve(
-      "0xF2d68898557cCb2Cf4C10c3Ef2B034b2a69DAD00",
-      ethers.utils.parseEther(amount.toString())
-    ).then(function (tx) {
-      console.log(
-        `Congrats, you just approved your DAI spend. You can see this tx at https://kovan.etherscan.io/tx/${tx.hash}`
-      );
-    });
-  } catch (error) {
-    console.log(
-      "Hmmm, your transaction threw an error. Make sure that this stream does not already exist, and that you've entered a valid Ethereum address!"
-    );
-    console.error(error);
-  }
-}
-
+import { accContext } from "../context/useContext";
 const SuperTokens = () => {
+  const ctx = useContext(accContext);
+  const [approveflag, setApproveflag] = useState(false);
+  const amount = useRef("0");
+  //where the Superfluid logic takes place
+  async function upgradeTokens(token) {
+    await ctx.sharedState.upgradeTokens(token);
+  }
+  async function approveTokens(token) {
+    await ctx.sharedState.approveTokens(token);
+    setApproveflag(true);
+  }
+  async function downgradeTokens(token) {
+    await ctx.sharedState.downgradeTokens(token);
+  }
+  useEffect(() => {
+    console.log(amount.current.value);
+  }, []);
   var [gradeFlag, setGradeFlag] = useState(false);
   return (
     <div className="flex items-center pl-[32rem]  ">
@@ -178,32 +47,59 @@ const SuperTokens = () => {
                 current {gradeFlag ? "matic" : "maticx"} balace is :
               </span>
             </label>{" "}
-            <div className="input-group pb-2">
-              <input
-                type="text"
-                placeholder="0.01"
-                className="input input-primary"
-              />
-              <button className="btn btn-primary">
-                {gradeFlag ? "matic" : "maticx"}
-              </button>
+            <div className="flex justify-around">
+              {" "}
+              <div className=" text-emerald-400 breadcrumbs ">
+                <ul>
+                  <li>
+                    <a>{gradeFlag ? "DAI" : "DAIx"}</a>
+                  </li>
+                  <li>
+                    <a>{gradeFlag ? "DAIx" : "DAI"}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="flex justify-center pb-2">to</div>
-            <div className="input-group">
+            <div className="input flex justify-center">
               <input
                 type="text"
-                placeholder="0.01"
+                ref={amount}
+                placeholder="enter amount"
                 className="input input-primary"
               />
-              <button className="btn btn-primary">
-                {gradeFlag ? "maticx" : "matic"}
+            </div>
+            <div className="pt-3 flex justify-center">
+              {" "}
+              <button
+                className={`btn ${
+                  approveflag ? "btn-success" : "btn-accent"
+                } btn-wide `}
+                onClick={() => {
+                  approveTokens(amount.current.value);
+                }}
+              >
+                {approveflag ? " Approved  " : "NOT Approved yet"}
               </button>
             </div>
           </div>
 
-          <button className="btn btn-primary pt-3">
-            {gradeFlag ? "upgarade" : "downgrade"}
-          </button>
+          <div className="flex justify-center">
+            {" "}
+            <button
+              className="btn btn-wide btn-primary "
+              onClick={() => {
+                if (gradeFlag) {
+                  console.log(amount.current.value);
+                  upgradeTokens(amount.current.value);
+                } else {
+                  console.log(amount.current.value);
+                  downgradeTokens(amount.current.value);
+                }
+              }}
+            >
+              {gradeFlag ? "upgarade" : "downgrade"}
+            </button>
+          </div>
         </div>
       </div>
     </div>
