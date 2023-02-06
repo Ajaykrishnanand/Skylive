@@ -1,8 +1,9 @@
-import { useState , useContext } from "react";
-import Login from "./Login";
+
 import { Link } from "react-router-dom";
 import Path from "../routes/path";
 import { accContext } from "../context/useContext";
+import { useContext } from "react";
+import Login from "./Login";
 const Navbar = () => {
 
     const ctx = useContext(accContext);
@@ -13,14 +14,16 @@ const Navbar = () => {
       <div className="drawer">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
-          <div className="w-full navbar flex justify-between border-white border-b-2 fixed bg-base-300">
-          <div>
+          <div className="w-full navbar flex justify-between border-white border-b-2 fixed bg-base-200">
+
+      
             <div className="flex-none">
+            <div className=" ">
               <button
                 className="btn btn-circle swap swap-rotate"
                 onClick={() => {
                   setVisible(!visible);
-                  console.log("hello");
+            
                 }}
               >
                 {/* <!-- this hidden checkbox controls the state --> */}
@@ -61,7 +64,9 @@ const Navbar = () => {
               >
                 Skylive.tv
               </Link>
+         
             </div>
+             
             </div>
             <div className="form-control    ">
               <input
@@ -79,8 +84,9 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-            </div>
+      
           </div>
+        </div>
         </div>
 
        
