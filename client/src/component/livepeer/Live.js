@@ -58,10 +58,7 @@ function LiveStreaming() {
   return (
     <>
       {" "}
-      <div
-        className="flex items-center pl-[32rem]"
-        style={{ margin: "15% 32%" }}
-      >
+      <div className=" pl-[32rem]" style={{ margin: "15% 32%" }}>
         <div>
           <input
             className="input w-full max-w-xs"
@@ -93,17 +90,18 @@ function LiveStreaming() {
         >
           click to record
         </button>
+
+        <Link
+          style={{ marginRight: "20px" }}
+          exact
+          className="nav-link btn-ghost"
+          to={"/player/nothing/" + playbackId}
+        >
+          Watch Your live stream
+        </Link>
+        <div>{`StreamKEY =>    ${streamKey}      `}</div>
+        {` Stream Server => srt://rtmp.livepeer.com:2935?streamid=${streamKey}`}
       </div>
-      <Link
-        style={{ marginRight: "20px" }}
-        exact
-        className="nav-link btn-ghost"
-        to={"/player/nothing/" + playbackId}
-      >
-        Watch Your live stream
-      </Link>
-      <div>{`StreamKEY =>    ${streamKey}      `}</div>
-      {` Stream Server => srt://rtmp.livepeer.com:2935?streamid=${streamKey}`}
     </>
   );
 }
