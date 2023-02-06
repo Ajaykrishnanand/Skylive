@@ -12,11 +12,7 @@ const onLogin = () => {
 };
 
 function App() {
-  const ctx = useContext(accContext);
-  const sidebar= ctx.sharedState.sidebar;
-  if(sidebar){
-  
-  }
+
   return (
     <Wrapper>
     <div className=" flex   ">
