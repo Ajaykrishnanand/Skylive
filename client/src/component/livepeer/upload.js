@@ -68,6 +68,29 @@ function Main() {
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
+        <label className="label">
+          <span className="label-text">Name</span>
+        </label>
+        <input
+          type="text"
+          className="input input-bordered input-info w-full max-w-xs"
+          placeholder="Name"
+          ref={nameInputRef}
+          required
+        />
+        <label className="label">
+          <span className="label-text">Description</span>
+        </label>
+        <input
+          type="text"
+          className="input input-bordered input-info w-full max-w-xs"
+          placeholder="Description"
+          ref={descriptionInputRef}
+          required
+        />
+        <label className="label">
+          <span className="label-text">Video</span>
+        </label>
         <input
           type="file"
           name="videoUrl"
