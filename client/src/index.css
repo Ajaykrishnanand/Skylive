@@ -17,7 +17,7 @@ code {
 
 .drawer {
   display: grid;
-  width: 15%;
+  width: 10%;
   overflow: hidden;
   height: 100vh;
   height: 100dvh;
