@@ -1,5 +1,5 @@
 import { useState, useRef, useContext } from "react";
-
+import upload from "./upload.png"
 import * as tus from "tus-js-client";
 
 import { ethers } from "ethers";
@@ -62,12 +62,18 @@ function Main() {
   };
 
   return (
-    <div className="flex items-center pl-[32rem] ">
+    <div className="flex items-center  ">
       <form
-        className="form-control w-full max-w-xs"
+        className="form-control       grid col-span-2 h-[40rem] w-[50rem] border-dashed border-[6px] rounded-bl-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem] "
+         
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
+      <img src={upload} className='h-80 w-80'>
+
+      </img>
+       <div className="flex justify-between gap-10">
+       <div>
         <label className="label">
           <span className="label-text">Name</span>
         </label>
@@ -78,6 +84,8 @@ function Main() {
           ref={nameInputRef}
           required
         />
+        </div>
+        <div>
         <label className="label">
           <span className="label-text">Description</span>
         </label>
@@ -88,6 +96,8 @@ function Main() {
           ref={descriptionInputRef}
           required
         />
+        </div>
+        </div>
         <label className="label">
           <span className="label-text">Video</span>
         </label>
@@ -106,6 +116,7 @@ function Main() {
         >
           {isLoading ? "Uploading..." : "Upload"}
         </button>
+       
       </form>
     </div>
   );
