@@ -64,12 +64,12 @@ function Main() {
   return (
     <div className="flex items-center  ">
       <form
-        className="form-control       grid col-span-2 h-[40rem] w-[50rem] border-dashed border-[6px] rounded-bl-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem] "
+        className="form-control       grid col-span-2 2xl:h-[40rem] h-[30rem] w-[50rem] border-dashed border-[6px] rounded-bl-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem] "
          
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
-      <img src={upload} className='h-80 w-80'>
+      <img src={upload} className='2xl:h-80 h-48 w-72 2xl:w-80'>
 
       </img>
        <div className="flex justify-between gap-10">
@@ -79,7 +79,7 @@ function Main() {
         </label>
         <input
           type="text"
-          className="input input-bordered input-info w-full max-w-xs"
+          className="input input-bordered  border-base-200 input-info w-full max-w-xs"
           placeholder="Name"
           ref={nameInputRef}
           required
@@ -91,7 +91,7 @@ function Main() {
         </label>
         <input
           type="text"
-          className="input input-bordered input-info w-full max-w-xs"
+          className="input input-bordered border-base-200 input-info w-full max-w-xs"
           placeholder="Description"
           ref={descriptionInputRef}
           required
@@ -99,19 +99,19 @@ function Main() {
         </div>
         </div>
         <label className="label">
-          <span className="label-text">Video</span>
+          <span className="label-text ">Video</span>
         </label>
         <input
           type="file"
           name="videoUrl"
           id="videoUrl"
-          className="file-input file-input-bordered file-input-info w-full max-w-xs"
+          className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
           onChange={videoHandler}
           required
         />
         <button
           type="submit"
-          className={`btn btn-outline btn-success ${isLoading && "loading"}`}
+          className={`btn bg-white text-black border-base-200 ${isLoading && "loading"}`}
           style={{ marginTop: "7%" }}
         >
           {isLoading ? "Uploading..." : "Upload"}
