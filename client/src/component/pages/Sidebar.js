@@ -14,7 +14,7 @@ const Sidebar = () => {
         <div className=" flex drawer-side 2xl:w-min  w-[110px] mt-[90px]  ">
           <label htmlFor="my-drawer-3" className=" "></label>
 
-          <ul className="menu bg-base-200 fixed border-r-2 h-full  border-white w-80 pt-20 ">
+          <ul className="menu bg-base-200 fixed border-r-2 h-full  border-white w-80 pt-4 ">
             <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
@@ -25,27 +25,7 @@ const Sidebar = () => {
                 Profile
               </Link>
             </li>
-            <li className="p-1">
-              <Link
-                style={{ marginRight: "20px" }}
-                exact
-                className="ring-1 ring-white rounded-xl"
-                to="/upload"
-                onClick={setVisible}
-              >
-                Upload
-              </Link>
-            </li>
-            <li className="p-1">
-              <Link
-                style={{ marginRight: "20px" }}
-                exact
-                className="ring-1 ring-white rounded-xl"
-                to="/live"
-              >
-                Live
-              </Link>
-            </li>
+
             <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
@@ -55,6 +35,16 @@ const Sidebar = () => {
                 onClick={setVisible}
               >
                 Player
+              </Link>
+            </li>
+            <li className="p-1">
+              <Link
+                style={{ marginRight: "20px" }}
+                exact
+                className="ring-1 ring-white rounded-xl"
+                to="/creater"
+              >
+                Become Creater
               </Link>
             </li>
             <li className="p-1">
