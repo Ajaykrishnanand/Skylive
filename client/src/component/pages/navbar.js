@@ -27,7 +27,7 @@ const Navbar = () => {
                   }}
                 >
                   {/* <!-- this hidden checkbox controls the state --> */}
-                  <input type="checkbox" />
+                  {/* <input type="checkbox" /> */}
 
                   {/* <!-- hamburger icon --> */}
                   <svg

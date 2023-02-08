@@ -5,14 +5,16 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   const ctx = useContext(accContext);
   const visible = ctx.sharedState.sidebar;
+  const setVisible = ctx.sharedState.setSidebar;
+
   console.log(visible);
   return (
     <>
       {visible && (
-        <div className=" flex drawer-side w-min  pt-[90px] ">
+        <div className=" flex drawer-side 2xl:w-min  w-[110px] mt-[90px]  ">
           <label htmlFor="my-drawer-3" className=" "></label>
 
-          <ul className="menu bg-base-200 fixed border-r-2 h-full  border-white w-80 ">
+          <ul className="menu bg-base-200 fixed border-r-2 h-full  border-white w-80 pt-20 ">
             <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
@@ -29,6 +31,7 @@ const Sidebar = () => {
                 exact
                 className="ring-1 ring-white rounded-xl"
                 to="/upload"
+                onClick={setVisible}
               >
                 Upload
               </Link>
@@ -49,6 +52,7 @@ const Sidebar = () => {
                 exact
                 className="ring-1 ring-white rounded-xl"
                 to="/player"
+                onClick={setVisible}
               >
                 Player
               </Link>
@@ -59,6 +63,7 @@ const Sidebar = () => {
                 exact
                 className="ring-1 ring-white rounded-xl"
                 to="/user"
+                onClick={setVisible}
               >
                 SWAP
               </Link>
@@ -69,6 +74,7 @@ const Sidebar = () => {
                 exact
                 className="ring-1 ring-white rounded-xl"
                 to="/dashbord"
+                onClick={setVisible}
               >
                 Channel
               </Link>
