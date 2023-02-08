@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js}","./node_modules/flowbite/**/*.js"],
+
+ 
   theme: {
     container: {
       padding: {
@@ -10,10 +12,16 @@ module.exports = {
         xl: "5rem",
         "2xl": "6rem",
       },
+
+    },
+    backgroundImage: {
+      'upload': "url('../public/uploada.png')",
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"),
+  require('flowbite/plugin')],
   daisyui: {
     themes: ["emerald"],
   },
+
 };
