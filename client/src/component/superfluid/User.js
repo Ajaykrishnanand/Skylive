@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 
-import { accContext } from "../context/useContext";
+import { accContext } from "../context/ApplicationContext";
 const SuperTokens = () => {
   const ctx = useContext(accContext);
   const [approveflag, setApproveflag] = useState(false);

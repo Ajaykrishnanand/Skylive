@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { accContext } from "../context/useContext";
+import { accContext } from "../context/ApplicationContext";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -37,16 +37,7 @@ const Sidebar = () => {
                 Player
               </Link>
             </li>
-            <li className="p-1">
-              <Link
-                style={{ marginRight: "20px" }}
-                exact
-                className="ring-2 ring-white mt-4 rounded-xl"
-                to="/creater"
-              >
-                Become Creater
-              </Link>
-            </li>
+
             <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
@@ -63,7 +54,7 @@ const Sidebar = () => {
                 style={{ marginRight: "20px" }}
                 exact
                 className="ring-2 mt-4 ring-white rounded-xl"
-                to="/dashbord"
+                to="/creater"
                 onClick={setVisible}
               >
                 Channel

@@ -31,6 +31,8 @@ function Main() {
         // onSubmit={}
         encType="multipart/form-data"
       >
+        {" "}
+        <p> you are not a creater become a creater</p>
         <div className="flex justify-between gap-10">
           <img src={creater} className="2xl:h-80 h-48 w-72 2xl:w-80"></img>
           <div>
@@ -87,7 +89,6 @@ function Main() {
           </div>
         </div>
         <div></div>
-
         <button
           type="submit"
           className={`btn bg-white text-black border-base-200 `}
