@@ -24,12 +24,12 @@ const Dashbord = () => {
         </div>
 
         <div className=" flex justify-evenly text-2xl ">
-          <h3 className="  text-black  outline-0">videos</h3>
+          <h3 className="  text-white  btn outline-0">videos</h3>
 
           <Link
             style={{ marginRight: "20px" }}
             exact
-            className="ring-1 ring-white rounded-xl"
+            className="ring-1 btn  ring-white rounded-xl"
             to="/live"
           >
             Go Live
@@ -37,7 +37,7 @@ const Dashbord = () => {
           <Link
             style={{ marginRight: "20px" }}
             exact
-            className="ring-1 ring-white rounded-xl"
+            className="ring-1 btn ring-white rounded-xl"
             to="/upload"
           >
             Upload
