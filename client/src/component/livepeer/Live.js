@@ -58,7 +58,10 @@ function LiveStreaming() {
   return (
     <>
       {" "}
-      <div className=" pl-[32rem]" style={{ margin: "15% 32%" }}>
+      <div className="2xl:ml-[43rem] ml-[17rem]">
+
+     
+      <div className=" " style={{ margin: "15% 32%" }}  >
         <div>
           <input
             className="input w-full max-w-xs"
@@ -101,6 +104,7 @@ function LiveStreaming() {
         </Link>
         <div>{`StreamKEY =>    ${streamKey}      `}</div>
         {` Stream Server => srt://rtmp.livepeer.com:2935?streamid=${streamKey}`}
+      </div>
       </div>
     </>
   );
