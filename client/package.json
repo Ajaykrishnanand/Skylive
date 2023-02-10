@@ -5,6 +5,8 @@
   "dependencies": {
     "@arcana/auth": "^1.0.0",
     "@arcana/auth-react": "^0.0.2",
+    "@headlessui/react": "^1.7.10",
+    "@heroicons/react": "^2.0.14",
     "@livepeer/react": "^2.1.5",
     "@superfluid-finance/sdk-core": "^0.6.1",
     "@testing-library/jest-dom": "^5.16.5",
