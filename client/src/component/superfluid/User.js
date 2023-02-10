@@ -21,8 +21,8 @@ const SuperTokens = () => {
   }, []);
   var [gradeFlag, setGradeFlag] = useState(false);
   return (
-    <div className="flex items-center pl-[32rem]  ">
-      <div className="card card-compact w-96  bg-base-100 shadow-xl">
+    <div className="flex items-center 2xl:ml-[49rem] ml-[22rem]  ">
+      <div className="card card-compact w-96  bg-transparent border-spacing-2 border-2 border-white shadow-2xl">
         <div className="card-body">
           <div className="card-actions justify-start">
             <button
