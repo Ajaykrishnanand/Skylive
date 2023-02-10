@@ -14,12 +14,12 @@ const Sidebar = () => {
         <div className=" flex drawer-side 2xl:w-min  w-[110px] mt-[90px]  ">
           <label htmlFor="my-drawer-3" className=" "></label>
 
-          <ul className="menu bg-base-200 fixed border-r-2 h-full  border-white w-80 pt-4 ">
+          <ul className="menu bg-transparant fixed border-r-2 h-full rounded-xl  border-base-200 w-80 pt-20 ">
             <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="ring-1 ring-white rounded-xl"
+                className="ring-2 ring-white mt-4 rounded-xl"
                 to="/user"
               >
                 Profile
@@ -41,7 +41,7 @@ const Sidebar = () => {
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="ring-1 ring-white rounded-xl"
+                className="ring-2 ring-white mt-4 rounded-xl"
                 to="/creater"
               >
                 Become Creater
@@ -51,7 +51,7 @@ const Sidebar = () => {
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="ring-1 ring-white rounded-xl"
+                className="ring-2 ring-white mt-4 rounded-xl"
                 to="/user"
                 onClick={setVisible}
               >
@@ -62,7 +62,7 @@ const Sidebar = () => {
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="ring-1 ring-white rounded-xl"
+                className="ring-2 mt-4 ring-white rounded-xl"
                 to="/dashbord"
                 onClick={setVisible}
               >
