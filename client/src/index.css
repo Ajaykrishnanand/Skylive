@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
 }
 
 code {
@@ -21,4 +22,24 @@ code {
   overflow: hidden;
   height: 100vh;
   height: 100dvh;
+}
+
+.card{
+  border-image:linear-gradient(45deg, rgb(144, 137, 252), rgb(255, 128, 181)) 1;
+
+}
+input {
+  border: none transparent;
+outline: none;
+}
+
+.btn{
+  /* border-image:linear-gradient(to-right, rgb(144, 137, 252), rgb(255, 128, 181)) 1; */
+  border-image-slice:46%;
+  border-top-width: 3px;
+  border-bottom-width:3px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+
+ 
 }
