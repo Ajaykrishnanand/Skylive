@@ -30,7 +30,7 @@ const Sidebar = () => {
               <Link
                 style={{ marginRight: "20px" }}
                 exact
-                className="ring-1 ring-white rounded-xl"
+                className="ring-1 ring-white mt-4 rounded-xl"
                 to="/player"
                 onClick={setVisible}
               >
