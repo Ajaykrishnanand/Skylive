@@ -18,14 +18,14 @@ const Dashbord = () => {
             </div>
           </div>
           <div className="pt-10">
-            <p className="text-lgn   pl-10 font-bold">channel name</p>
+            <p className="text-lg  pl-10 font-bold">channel name</p>
 
             <p className="text-lg  pl-10 font-bold">@username</p>
           </div>
         </div>
 
         <div className=" flex justify-evenly text-2xl ">
-          <h3 className="  text-white  btn outline-0">videos</h3>
+          <div className="   text-base-600  ">videos</div>
 
           <Link
             style={{ marginRight: "20px" }}
