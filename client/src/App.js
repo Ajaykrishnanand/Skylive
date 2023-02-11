@@ -9,10 +9,10 @@ import {
   createReactClient,
   studioProvider,
 } from "@livepeer/react";
-import Wrapper, { accContext } from "./component/context/useContext";
+import Wrapper, { accContext } from "./component/context/ApplicationContext";
 import Sidebar from "./component/pages/Sidebar";
 import { useContext } from "react";
-import Uploadcard from "./component/pages/Uploadcard";
+
 const provider = new AuthProvider("b373797fae6275c96ac63108a0733bf78ac1863f");
 const onLogin = () => {};
 
@@ -26,7 +26,7 @@ function App() {
   }
   return (
     <Wrapper>
-    <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden sm:top-[-20rem]">
+    <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
 
 <svg
   className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
