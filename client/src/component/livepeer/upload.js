@@ -7,8 +7,8 @@ import { ethers } from "ethers";
 function Main() {
   const [isLoading, setIsLoading] = useState(false);
   const [video, setVideo] = useState("");
-
-  const nameInputRef = useRef();
+  const thumbnail = useRef("");
+  const TitleInputRef = useRef();
   const descriptionInputRef = useRef();
 
   const videoHandler = (event) => {
@@ -60,7 +60,13 @@ function Main() {
     }
     upload.start();
   };
-
+  function showname () {
+    var name = document.getElementById('fileInput'); 
+    alert('Selected file: ' + name.files.item(0).name);
+    alert('Selected file: ' + name.files.item(0).size);
+    alert('Selected file: ' + name.files.item(0).type);
+    console.log("got it")
+  };
   return (
     <div className="flex items-center  ">
       <form
@@ -68,10 +74,6 @@ function Main() {
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
-        {/* <img src={upload} className='2xl:h-80 h-48 w-72 2xl:w-80'>
-
-      </img> */}
-        {/* upload file */}
         <div className="flex items-center justify-center w-full">
           <label
             htmlFor="dropzone-file"
@@ -101,48 +103,70 @@ function Main() {
                 SVG, PNG, JPG or GIF (MAX. 800x400px)
               </p>
             </div>
-            <input id="dropzone-file" type="file" className="hidden" />
+            <input id="dropzone-file" type="file" className="hidden"  onChange={showname}/>
           </label>
         </div>
-
-        {/*  */}
         <div className="flex justify-between gap-10">
           <div>
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              className="input input-bordered  border-base-200 input-info w-full max-w-xs"
-              placeholder="Name"
-              ref={nameInputRef}
-              required
-            />
+            <div>
+              <label className="label">
+                <span className="label-text pl-2"> Video-Title</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered  border-base-200 input-info w-full max-w-xs"
+                placeholder="Name"
+                ref={TitleInputRef}
+                required
+              />
+              <hr></hr>
+            </div>
+            <div>
+              <label className="label">
+                <span className="label-text pl-2">Description</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered border-base-200 input-info w-full max-w-xs"
+                placeholder="Description"
+                ref={descriptionInputRef}
+                required
+              />
+              <hr></hr>
+            </div>
           </div>
           <div>
-            <label className="label">
-              <span className="label-text">Description</span>
-            </label>
-            <input
-              type="text"
-              className="input input-bordered border-base-200 input-info w-full max-w-xs"
-              placeholder="Description"
-              ref={descriptionInputRef}
-              required
-            />
+            <div>
+              <label className="label">
+                <span className="label-text pl-2 ">thumbnail</span>
+              </label>
+              <input
+                type="file"
+                name="thumbnailurl"
+                id="thumbnailurl"
+                className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
+                ref={thumbnail}
+                required
+              />
+
+              <hr></hr>
+            </div>
+            <div>
+              <label className="label">
+                <span className="label-text pl-2 ">Video</span>
+              </label>
+              <input
+                type="file"
+                name="videoUrl"
+                id="videoUrl"
+                className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
+                onChange={videoHandler}
+                required
+              />
+              <hr></hr>
+            </div>
           </div>
         </div>
-        <label className="label">
-          <span className="label-text ">Video</span>
-        </label>
-        <input
-          type="file"
-          name="videoUrl"
-          id="videoUrl"
-          className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
-          onChange={videoHandler}
-          required
-        />
         <button
           type="submit"
           className={`btn bg-white text-black border-base-200 ${
