@@ -3,7 +3,9 @@ import Login from "./Login";
 import { Link } from "react-router-dom";
 import Path from "../routes/path";
 import { accContext } from "../context/ApplicationContext";
-import { ethers } from "ethers";
+
+import { ethers } from "ethers"
+
 const Navbar = () => {
   const ctx = useContext(accContext);
   // const visible = ctx.sharedState.sidebar;
