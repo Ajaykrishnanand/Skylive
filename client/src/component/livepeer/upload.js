@@ -1,16 +1,35 @@
 import { useState, useRef, useContext } from "react";
 import upload from "./upload.png";
 import * as tus from "tus-js-client";
-
+import { accContext } from "../context/ApplicationContext";
 import { ethers } from "ethers";
-
+import axios from "axios";
 function Main() {
+  const ctx = useContext(accContext);
+  const adress = ctx.sharedState.acclogin.accountAddress;
   const [isLoading, setIsLoading] = useState(false);
+  const [flag, setFlag] = useState(false);
   const [video, setVideo] = useState("");
-  const thumbnail = useRef("");
+  const thumbnailRef = useRef("");
   const TitleInputRef = useRef();
   const descriptionInputRef = useRef();
-
+  const Uploadall = async (videos) => {
+    const url = videos.substring(62);
+    const data = {
+      address: adress,
+      description: descriptionInputRef,
+      thumbnail: thumbnailRef,
+      playerid: url,
+      totalview: "0",
+      free: flag,
+    };
+    try {
+      const response = await axios.post("http://localhost:8081/Videos", data);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const videoHandler = (event) => {
     setVideo(event.target.files[0]);
   };
@@ -52,6 +71,7 @@ function Main() {
       onSuccess() {
         console.log("Upload finished:", upload.url);
         console.log("upload is", upload);
+        Uploadall(upload.url);
       },
     });
     const previousUploads = await upload.findPreviousUploads();
@@ -59,14 +79,15 @@ function Main() {
       upload.resumeFromPreviousUpload(previousUploads[0]);
     }
     upload.start();
+    console.log("hlweoij");
   };
-  function showname () {
-    var name = document.getElementById('fileInput'); 
-    alert('Selected file: ' + name.files.item(0).name);
-    alert('Selected file: ' + name.files.item(0).size);
-    alert('Selected file: ' + name.files.item(0).type);
-    console.log("got it")
-  };
+  function showname() {
+    var name = document.getElementById("fileInput");
+    alert("Selected file: " + name.files.item(0).name);
+    alert("Selected file: " + name.files.item(0).size);
+    alert("Selected file: " + name.files.item(0).type);
+    console.log("got it");
+  }
   return (
     <div className="flex items-center  ">
       <form
@@ -103,7 +124,12 @@ function Main() {
                 SVG, PNG, JPG or GIF (MAX. 800x400px)
               </p>
             </div>
-            <input id="dropzone-file" type="file" className="hidden"  onChange={showname}/>
+            <input
+              id="dropzone-file"
+              type="file"
+              className="hidden"
+              onChange={showname}
+            />
           </label>
         </div>
         <div className="flex justify-between gap-10">
@@ -145,7 +171,7 @@ function Main() {
                 name="thumbnailurl"
                 id="thumbnailurl"
                 className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
-                ref={thumbnail}
+                ref={thumbnailRef}
                 required
               />
 

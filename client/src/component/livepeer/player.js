@@ -5,9 +5,8 @@ function PlayerComponent() {
       {" "}
       <Player
         title="Agent 327: Operation Barbershop"
-        playbackId="6d7el73r1y12chxr"
+        playbackId="f0489vcaky7qtbxr"
         // poster="/images/blender-poster.png"
-      
       />
     </div>
   );

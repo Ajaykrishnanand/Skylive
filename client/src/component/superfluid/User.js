@@ -68,19 +68,21 @@ const SuperTokens = () => {
                 className="input input-primary"
               />
             </div>
-            <div className="pt-3 flex justify-center">
-              {" "}
-              <button
-                className={`btn ${
-                  approveflag ? "btn-success" : "btn-accent"
-                } btn-wide `}
-                onClick={() => {
-                  approveTokens(amount.current.value);
-                }}
-              >
-                {approveflag ? " Approved  " : "NOT Approved yet"}
-              </button>
-            </div>
+            {gradeFlag && (
+              <div className="pt-3 flex justify-center">
+                {" "}
+                <button
+                  className={`btn ${
+                    approveflag ? "btn-success" : "btn-accent"
+                  } btn-wide `}
+                  onClick={() => {
+                    approveTokens(amount.current.value);
+                  }}
+                >
+                  {approveflag ? " Approved  " : "NOT Approved yet"}
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="flex justify-center">

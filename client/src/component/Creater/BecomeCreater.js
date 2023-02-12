@@ -3,28 +3,42 @@ import creater from "./creater.png";
 import * as tus from "tus-js-client";
 import axios from "axios";
 import { ethers } from "ethers";
-
+import { accContext } from "../context/ApplicationContext";
+import { useNavigate } from "react-router";
 function Main() {
+  const ctx = useContext(accContext);
+  const navigate = useNavigate();
+  const adress = ctx.sharedState.acclogin.accountAddress;
   const Name = useRef();
   const About = useRef();
   const ChannelName = useRef();
   const profilePicture = useRef();
   const BackgroundImage = useRef();
-  const channellogo = useRef();
-  const account = "sdjfow";
+
   const uploaddata = async () => {
     const data = {
-      name: Name,
-      about: About,
-      channelName: ChannelName,
-      profilePicture: profilePicture,
-      backgroundImage: BackgroundImage,
- 
-      account: account,
+      channelname: ChannelName.current.value,
+      name: Name.current.value,
+      about: About.current.value,
+
+      channelprofile: profilePicture.current.value,
+      channelbackground: BackgroundImage.current.value,
+      address: adress,
+      numberOfSubscribers: "0",
     };
 
-    const datais = await axios.Post("", data);
-    console.log(datais);
+    alert(data.name);
+
+    try {
+      const datais = await axios.post("http://localhost:8081/Creaters", data);
+
+      navigate("/creater");
+
+      console.log(datais);
+    } catch (err) {
+      console.log(err);
+      alert(err);
+    }
   };
   return (
     <div className="flex items-center  ">
@@ -36,7 +50,10 @@ function Main() {
         {" "}
         <p> you are not a creater become a creater</p>
         <div className="flex justify-between gap-10">
-          <img src={creater} className="2xl:h-80 h-48 w-72 mt-20 2xl:w-80"></img>
+          <img
+            src={creater}
+            className="2xl:h-80 h-48 w-72 mt-20 2xl:w-80"
+          ></img>
           <div>
             {/* <label className="label pl-4">
               <span className="label-text">Name</span>
@@ -50,17 +67,18 @@ function Main() {
             />
             <hr></hr>
             <label className="label ml-2  mt-7">
-              <span className="label-text text-[15px] text-base-500">Back-ground  image</span>
+              {/* <span className="label-text text-[15px] text-base-500">
+                Back-ground image
+              </span> */}
             </label>
             <input
-              type="file"
+              type="text"
               className="input input-bordered border-base-200 input-info w-full max-w-xs"
-              placeholder="Back-ground image"
+              placeholder="Back-ground Image Link"
               ref={BackgroundImage}
               required
-              
             />
-            <hr/>
+            <hr />
             {/* <label className="label ml-2  mt-7">
               <span className="label-text text-[15px]   text-base-500">Channel logo</span>
             </label>
@@ -79,11 +97,11 @@ function Main() {
             <input
               type="text"
               className="input input-bordered border-base-200 input-info w-full max-w-xs  mt-7"
-              placeholder="about"
+              placeholder="About"
               ref={About}
               required
             />
-             <hr/>
+            <hr />
             {/* <label className="label">
               <span className="label-text">Channel Name</span>
             </label> */}
@@ -94,21 +112,21 @@ function Main() {
               ref={ChannelName}
               required
             />
-              <hr/>
+            <hr />
             <label className="label">
-              <span className="label-text  text-[15px]   text-base-500 ml-2 mt-7">Profile picture</span>
+              {/* <span className="label-text  text-[15px]   text-base-500 ml-2 mt-7">
+                Profile picture
+              </span> */}
             </label>
             <input
-              type="file"
+              type="text"
               className="input input-bordered border-base-200 input-info w-full max-w-xs "
-            
-              placeholder="profile picture"
+              placeholder="Profile Picture Link"
               ref={profilePicture}
               required
             />
-            
-            <hr/>
 
+            <hr />
           </div>
         </div>
         <div></div>
@@ -117,7 +135,9 @@ function Main() {
           className={`btn bg-white text-black border-base-200 `}
           // isLoading && "loading"
           // style={{ marginTop: "7%" }}
-          onClick={uploaddata}
+          onClick={() => {
+            uploaddata();
+          }}
         >
           {/* {isLoading ? "Uploading..." : "Upload"} */}
           upload

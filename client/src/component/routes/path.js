@@ -5,7 +5,8 @@ import User from "../superfluid/User";
 import Live from "../livepeer/Live";
 import Player from "../livepeer/player";
 import Uploadcard from "../pages/Uploadcard";
-import Postcard from "../card/Postcard"
+import Postcard from "../card/Postcard";
+import BecomeCreater from "../Creater/BecomeCreater";
 import Home from "../pages/home";
 const Path = () => {
   return (
@@ -18,9 +19,8 @@ const Path = () => {
       <Route exact path="/creater" element={<Creater />} />
       <Route exact path="/uploadcard" element={<Uploadcard />} />
       <Route exact path="/live" element={<Live />} />
-      <Route exact path="/posts" element={<Postcard/>} />
-
-
+      <Route exact path="/becomeCreater" element={<BecomeCreater />} />
+      <Route exact path="/posts" element={<Postcard />} />
     </Routes>
   );
 };

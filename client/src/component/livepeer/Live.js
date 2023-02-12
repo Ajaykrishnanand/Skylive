@@ -44,9 +44,10 @@ function LiveStreaming() {
       const ans = await axios.post("https://livepeer.studio/api/stream", data, {
         headers: {
           "Content-Type": "application/json",
-          authorization: `Bearer ${"4402a176-ddeb-4ecc-bfd6-ea9be0466f11"}`,
+          authorization: `Bearer ${"55b8d283-5a19-4dc0-b6c6-3ac3f00dbd29"}`,
         },
       });
+      console.log(ans.data);
       setPlaybackId(ans.data.playbackId);
       setStreamKey(ans.data.streamKey);
       console.log(ans.data.streamKey);
@@ -59,52 +60,50 @@ function LiveStreaming() {
     <>
       {" "}
       <div className="2xl:ml-[43rem] ml-[17rem]">
+        <div className=" " style={{ margin: "15% 32%" }}>
+          <div>
+            <input
+              className="input w-full max-w-xs"
+              id={"my-input"}
+              type={"text"}
+              value={name}
+              style={{ width: "400" }}
+              placeholder={"Type here"}
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
+          </div>
 
-     
-      <div className=" " style={{ margin: "15% 32%" }}  >
-        <div>
-          <input
-            className="input w-full max-w-xs"
-            id={"my-input"}
-            type={"text"}
-            value={name}
-            style={{ width: "400" }}
-            placeholder={"Type here"}
-            onChange={(event) => {
-              setName(event.target.value);
+          <button
+            className="btn btn-ghost"
+            onClick={LiveStream}
+            style={{ width: "200px" }}
+          >
+            Generate Stream Key
+          </button>
+          <button
+            className="btn btn-ghost"
+            onClick={() => {
+              setFlag(true);
+              alert("your livestream is going to be record");
             }}
-          />
+            style={{ width: "190px" }}
+          >
+            click to record
+          </button>
+
+          <Link
+            style={{ marginRight: "20px" }}
+            exact
+            className="nav-link btn-ghost"
+            to={"/player/nothing/" + playbackId}
+          >
+            Watch Your live stream
+          </Link>
+          <div>{`StreamKEY =>    ${streamKey}      `}</div>
+          {` Stream Server => srt://rtmp.livepeer.com:2935?streamid=${streamKey}`}
         </div>
-
-        <button
-          className="btn btn-ghost"
-          onClick={LiveStream}
-          style={{ width: "200px" }}
-        >
-          Generate Stream Key
-        </button>
-        <button
-          className="btn btn-ghost"
-          onClick={() => {
-            setFlag(true);
-            alert("your livestream is going to be record");
-          }}
-          style={{ width: "190px" }}
-        >
-          click to record
-        </button>
-
-        <Link
-          style={{ marginRight: "20px" }}
-          exact
-          className="nav-link btn-ghost"
-          to={"/player/nothing/" + playbackId}
-        >
-          Watch Your live stream
-        </Link>
-        <div>{`StreamKEY =>    ${streamKey}      `}</div>
-        {` Stream Server => srt://rtmp.livepeer.com:2935?streamid=${streamKey}`}
-      </div>
       </div>
     </>
   );
