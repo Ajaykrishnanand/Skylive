@@ -8,6 +8,7 @@ import { ethers } from "ethers";
 export const accContext = createContext({});
 
 const Wrapper = (props) => {
+  const [channel, setChannel] = useState([]);
   const [acclogin, setAcclogin] = useState({
     provider: null,
     signer: null,
@@ -179,6 +180,8 @@ const Wrapper = (props) => {
 
   const sharedState = {
     setData,
+    channel,
+    setChannel,
     acclogin,
     sidebar,
     setSidebar,

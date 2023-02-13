@@ -9,17 +9,24 @@ function Creater() {
   const ctx = useContext(accContext);
   const navigate = useNavigate();
 
-  const adress = ctx.sharedState.acclogin.accountAddress;
+  // const adress = ctx.sharedState.acclogin.accountAddress;
 
   async function check(adress) {
+    const datais = {
+      adress: adress,
+    };
     try {
       const data = await axios.post(
         "http://localhost:8081/Creaters/adress",
-        adress
+        datais
       );
-      console.log(data.data.length);
+
       if (data.data.length > 0) {
+        ctx.sharedState.setChannel(data.data);
+        console.log(ctx.sharedState.channel);
         setFlag(true);
+      } else {
+        navigate("/becomeCreater");
       }
     } catch (e) {
       console.log(e);

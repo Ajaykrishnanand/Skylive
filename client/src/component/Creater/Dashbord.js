@@ -3,10 +3,10 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { accContext } from "../context/ApplicationContext";
 const Dashbord = () => {
-  const [channeldata, setChannelData] = useState([]);
   const [videoData, setVideoData] = useState([]);
   const ctx = useContext(accContext);
   const adress = ctx.sharedState.acclogin.accountAddress;
+  const Channel = ctx.sharedState.channel;
   const CheckChannel = async () => {
     const data = {
       address: adress,
@@ -16,13 +16,13 @@ const Dashbord = () => {
       data
     );
     console.log(dataforchannel);
-    setChannelData(dataforchannel.data);
+    console.log(Channel);
     const videoList = await axios.post(
       "http://localhost:8081/Videos/adress",
       data
     );
     console.log(videoList);
-    setVideoData(videoList.data);
+    await setVideoData(videoList.data);
     console.log(videoData);
   };
 
