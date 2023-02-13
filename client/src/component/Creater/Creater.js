@@ -17,8 +17,10 @@ function Creater() {
         "http://localhost:8081/Creaters/adress",
         adress
       );
-
-      setFlag(data.data);
+      console.log(data.data.length);
+      if (data.data.length > 0) {
+        setFlag(true);
+      }
     } catch (e) {
       console.log(e);
     }

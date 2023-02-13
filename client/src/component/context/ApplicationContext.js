@@ -156,10 +156,13 @@ const Wrapper = (props) => {
       daiABI,
       signer
     );
+    const daix = await sf.loadSuperToken("fDAIx");
+
+    console.log(daix);
     try {
       console.log("approving DAI spend");
       await DAI.approve(
-        myadress,
+        daix.address,
         ethers.utils.parseEther(amount.toString())
       ).then(function (tx) {
         console.log(

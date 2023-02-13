@@ -17,12 +17,14 @@ function Main() {
     const url = videos.substring(62);
     const data = {
       address: adress,
-      description: descriptionInputRef,
-      thumbnail: thumbnailRef,
+      description: descriptionInputRef.current.value,
+      thumbnail: thumbnailRef.current.value,
       playerid: url,
       totalview: "0",
       free: flag,
+      title: TitleInputRef.current.value,
     };
+    console.log(data);
     try {
       const response = await axios.post("http://localhost:8081/Videos", data);
       console.log(response);
@@ -72,6 +74,7 @@ function Main() {
         console.log("Upload finished:", upload.url);
         console.log("upload is", upload);
         Uploadall(upload.url);
+        setIsLoading(false);
       },
     });
     const previousUploads = await upload.findPreviousUploads();
@@ -164,17 +167,15 @@ function Main() {
           <div>
             <div>
               <label className="label">
-                <span className="label-text pl-2 ">thumbnail</span>
+                <span className="label-text pl-2">Thumbnail</span>
               </label>
               <input
-                type="file"
-                name="thumbnailurl"
-                id="thumbnailurl"
-                className="file-input file-input-bordered border-base-200 file-input-info w-full max-w-xs"
+                type="text"
+                className="input input-bordered border-base-200 input-info w-full max-w-xs"
+                placeholder="Description"
                 ref={thumbnailRef}
                 required
               />
-
               <hr></hr>
             </div>
             <div>

@@ -22,7 +22,12 @@ const SuperTokens = () => {
   var [gradeFlag, setGradeFlag] = useState(false);
   return (
     <div className="flex items-center 2xl:ml-[49rem] ml-[22rem]  ">
-      <div className="card card-compact w-96  bg-transparent border-spacing-2 border-2 border-white shadow-2xl">
+      <div
+        className=" card-compact w-96 bg-transparent
+        border-spacing-2 border-2 border-white shadow-2xl"
+      >
+        {/* line no 25 me class Name me y  {card card-compact w-96 bg-transparent
+        border-spacing-2 border-2 border-white shadow-2xl} dalne ke waje se y km ni kr ra tha */}
         <div className="card-body">
           <div className="card-actions justify-start">
             <button

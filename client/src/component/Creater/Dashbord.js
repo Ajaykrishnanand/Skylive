@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { accContext } from "../context/ApplicationContext";
 const Dashbord = () => {
+  const [channeldata, setChannelData] = useState([]);
+  const [videoData, setVideoData] = useState([]);
   const ctx = useContext(accContext);
   const adress = ctx.sharedState.acclogin.accountAddress;
   const CheckChannel = async () => {
@@ -10,14 +12,24 @@ const Dashbord = () => {
       address: adress,
     };
     const dataforchannel = await axios.post(
-      "http://localhost:8081/Creater",
+      "http://localhost:8081/Creaters/adress",
       data
     );
+    console.log(dataforchannel);
+    setChannelData(dataforchannel.data);
     const videoList = await axios.post(
       "http://localhost:8081/Videos/adress",
       data
     );
+    console.log(videoList);
+    setVideoData(videoList.data);
+    console.log(videoData);
   };
+
+  useEffect(() => {
+    CheckChannel();
+  }, [adress]);
+
   return (
     <>
       <div className=" component 2xl:ml-36 w-[66rem] 2xl:w-[100rem] mt-36 ml-20  ">
