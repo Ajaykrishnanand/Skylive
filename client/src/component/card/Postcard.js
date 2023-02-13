@@ -1,59 +1,61 @@
 import { Link } from "react-router-dom";
- import axios from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Postcard = (props) => {
-  const[posts,setPost]= useState([]);
-  const getPosts=async()=>{
-    console.log("hello form the home ..")
-    try{
-      const{data} = await axios.get("https://dummyjson.com/products")
+  const [allvideos, SetAllvideos] = useState([]);
+  const [posts, setPost] = useState([]);
+  const getPosts = async () => {
+    console.log("hello form the home ..");
+    try {
+      const { data } = await axios.get("https://dummyjson.com/products");
+      const videoList = await axios.post(
+        "http://localhost:8081/Videos/all",
+        data
+      );
+      SetAllvideos(videoList.data);
+      console.log(allvideos);
+
       const datais = data.products;
       setPost(datais);
-
-    }catch(e){
-      console.log(e)
+    } catch (e) {
+      console.log(e);
     }
-  }
-  useEffect(()=>{
-     console.log(posts)
-
-  },[posts])
-  useEffect(()=>{
- 
-      getPosts()
-
-    
-  },[]) 
+  };
+  useEffect(() => {
+    console.log(posts);
+  }, [posts]);
+  useEffect(() => {
+    getPosts();
+  }, []);
 
   return (
     <>
-      
       <div className="grid col-span-2 2xl:pl-40  pl-20 pt-20 grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
         {posts &&
-          posts.length>0 && posts.map((post) => (
+          posts.length > 0 &&
+          posts.map((post) => (
             <div className=" p-8 	">
               <div className="card card-compact w-60 h-60 shadow-2xl  ">
                 <figure className="h-full">
-                  <a href={ post.thumbnail}>
-                    <img  src={ post.thumbnail} onClick={ post.thumbnail}  />
+                  <a href={post.thumbnail}>
+                    <img src={post.thumbnail} onClick={post.thumbnail} />
                   </a>
                 </figure>
                 <div className="card-body h-24 ">
-                <div className="flex justify-between">
-                  <Link to ='/player'>
-                    <div className="avatar">
-                      <div className="w-12 rounded-full">
-                        <img src={ post.images[3]} />
+                  <div className="flex justify-between">
+                    <Link to="/player">
+                      <div className="avatar">
+                        <div className="w-12 rounded-full">
+                          <img src={post.images[3]} />
+                        </div>
                       </div>
-                      </div>
-                      </Link>
-                    
-                    <div> 
-                    <p className="card-title text-lg ">{ post.title}</p>
+                    </Link>
+
+                    <div>
+                      <p className="card-title text-lg ">{post.title}</p>
                     </div>
-                   
-                    </div>
+                  </div>
                 </div>
               </div>
             </div>
