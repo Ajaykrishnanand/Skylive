@@ -9,6 +9,8 @@ import Postcard from "../card/Postcard";
 import BecomeCreater from "../Creater/BecomeCreater";
 import Home from "../pages/home";
 import Sorts from "../livepeer/Sorts";
+import OBS from "../livepeer/LiveOBS";
+import Camera from "../livepeer/cameralive";
 const Path = () => {
   return (
     <Routes>
@@ -23,6 +25,8 @@ const Path = () => {
       <Route exact path="/becomeCreater" element={<BecomeCreater />} />
       <Route exact path="/posts" element={<Postcard />} />
       <Route exact path="/shorts" element={<Sorts />} />
+      <Route exact path="/obs" element={<OBS />} />
+      <Route exact path="/camera" element={<Camera />} />
     </Routes>
   );
 };
