@@ -8,6 +8,7 @@ import Uploadcard from "../pages/Uploadcard";
 import Postcard from "../card/Postcard";
 import BecomeCreater from "../Creater/BecomeCreater";
 import Home from "../pages/home";
+import Sorts from "../livepeer/Sorts";
 const Path = () => {
   return (
     <Routes>
@@ -21,6 +22,7 @@ const Path = () => {
       <Route exact path="/live" element={<Live />} />
       <Route exact path="/becomeCreater" element={<BecomeCreater />} />
       <Route exact path="/posts" element={<Postcard />} />
+      <Route exact path="/shorts" element={<Sorts />} />
     </Routes>
   );
 };

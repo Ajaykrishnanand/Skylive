@@ -20,9 +20,19 @@ const Sidebar = () => {
                 style={{ marginRight: "20px" }}
                 exact
                 className="ring-2 ring-white mt-4 rounded-xl"
-                to="/user"
+                to="/"
               >
-                Profile
+                Home
+              </Link>
+            </li>
+            <li className="p-1">
+              <Link
+                style={{ marginRight: "20px" }}
+                exact
+                className="ring-2 ring-white mt-4 rounded-xl"
+                to="/shorts"
+              >
+                Shorts
               </Link>
             </li>
 
