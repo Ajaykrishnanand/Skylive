@@ -14,7 +14,7 @@ function LiveStreaming() {
       {" "}
       <div className="flex items-center  ">
         <form
-          className="form-control       grid col-span-2 2xl:h-[40rem] h-[33rem] w-[50rem] border-dashed border-[6px] rounded-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem]  "
+          className="form-control       grid col-span-2 2xl:h-[80rem] h-[33rem] w-[50rem] border-dashed border-[6px] rounded-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem]  "
           // onSubmit={formSubmitHandler}
           encType="multipart/form-data"
         >
