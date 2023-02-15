@@ -98,7 +98,12 @@ function Main() {
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
-        <div className="flex items-center justify-center w-full">
+      <div className="flex justify-center">
+        <img src={upload} className="h-[240px] w-[240px]">
+
+        </img>
+      </div>
+        {/* <div className="flex items-center justify-center w-full">
           <label
             htmlFor="dropzone-file"
             className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-[30px] cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -134,7 +139,7 @@ function Main() {
               onChange={showname}
             />
           </label>
-        </div>
+        </div> */}
         <div className="flex justify-between gap-10">
           <div>
             <div>
