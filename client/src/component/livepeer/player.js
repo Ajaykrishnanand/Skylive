@@ -1,6 +1,7 @@
 import { Player } from "@livepeer/react";
-import "./player.module.css"
+import btnscss from "./player.module.scss"
 function PlayerComponent() {
+
   return (
   
     <div className=" grid grid-cols-9 component 2xl:ml-[19rem] ml-[60px] mt-24 2xl:w-[80rem]  w-[60rem] h-[26rem]  2xl:h-full 2xl:pt-auto ">
@@ -12,18 +13,27 @@ function PlayerComponent() {
         // poster="/images/blender-poster.png"
       
       />
-      <div className="flex justify-center">video name </div>
-      <div className="flex justify-evenly  pt-20  bg-base-200 rounded-box">
-        <div className="flex justify-between flex-1">
-          <div className="avatar   ">
+      <div className="flex pt-4 pl-[2px] ">video name </div>
+      <div className="flex justify-evenly  mt-10  bg-base-200 rounded-box">
+        <div className="flex  flex-1">
+          <div className="avatar mt-2 ml-2 mb-2   ">
             <div className="w-24 h-24 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG_IRHIHRvCijJ7Aaxka7bAWR9ayZxYiwKbb2QAGifRw&s" />
             </div>
           </div>
-          <div className="flex-1">channel name</div>
+          <div className="mr-4 mt-9 ml-7">channel name</div>
+          <button className={btnscss.btn}  onClick={()=>{
+            console.log("the subscribe buttton is clicked  ")
+          }}>
+       subscribe
+          </button>
+       
+          <button className={btnscss.btn} onClick={()=>{
+            console.log("the join is  button clicked  ")
+          }}> join </button>
         </div>
 
-        <div>uploaded at 2 days ago</div>
+        <div className="mt-9 mr-4">uploaded at 2 days ago</div>
       </div>
       <div>
         <div
