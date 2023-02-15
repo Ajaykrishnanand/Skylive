@@ -1,0 +1,69 @@
+// .btn{
+//   border-image:linear-gradient(to-right, rgb(144, 137, 252), rgb(255, 128, 181)) 1; 
+//     border-image-slice:90%;
+//     border-top-width: 3px;
+//     padding: 30px;
+//     border-bottom-width:3px;
+//     border-left-width: 0px;
+//     border-right-width: 0px;
+//     border-color :yellowgreen;
+//     padding-top: 20x;
+  
+   
+//   }
+
+  // .btn{
+        
+  //       background: linear-gradient(white, white) padding-box,
+  //                   linear-gradient(to right, darkblue, darkorchid) border-box;
+  //       border-radius: 12px;
+  //       border: 2px solid transparent;
+  //       border-spacing: 12px;
+    
+  
+    // &::before{
+
+    //     content: "";
+    //     position: absolute;
+    //     inset: 0;
+    //     border-radius: 15px; 
+    //     border-width:3px;
+    //   padding: 3px;
+    //     background:linear-gradient(45deg, rgb(144, 137, 252), rgb(255, 128, 181)) border-box;
+    //     -webkit-mask: 
+    //        linear-gradient(#fff 0 0) content-box, 
+    //        linear-gradient(#fff 0 0);
+       
+    //             mask-composite: exclude; 
+    //   }
+
+  // }
+           
+  .btn {
+    background-image: linear-gradient(45deg, rgb(144, 137, 252), rgb(255, 128, 181));
+   margin-top: 20px;
+   margin-right: 16px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: inline-flex;
+    display: block;
+    margin-right:17px;
+    border-radius: 50px;
+    height: 55px;
+   
+
+ 
+  }
+
+  .btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
