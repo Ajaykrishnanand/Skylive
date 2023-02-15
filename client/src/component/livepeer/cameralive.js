@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-
+import LiveButton from "./cameralive.module.scss"
 import { Client } from "@livepeer/webrtmp-sdk";
 
 function App() {
@@ -53,17 +53,24 @@ function App() {
 
   return (
     <>
-      <div className="App">
+      <div className="App flex place-items-center ">
+        <div className="2xl:ml-[650px] mt-[5rem]  ml-[90px] ">
+        
+       
+        <video className="App-video rounded-xl " ref={videoEl} />
+         <div className="flex justify-evenly pt-10"> 
         <input
-          className="App-input"
+          className="App-input border-3  rounded-full"
           ref={inputEl}
           type="text"
-          placeholder="streamKey"
-        />
-        <video className="App-video" ref={videoEl} />
-        <button className="App-button" onClick={onButtonClick}>
+          placeholder=" Put your stream-Key here"
+          />
+        <hr/>
+        <button className={LiveButton.btn} onClick={onButtonClick}>
           Start
         </button>
+        </div>
+        </div>
       </div>
     </>
   );
