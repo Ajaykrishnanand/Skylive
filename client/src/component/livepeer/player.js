@@ -33,7 +33,7 @@ function PlayerComponent() {
           }}> join </button>
         </div>
 
-        <div className="mt-9 mr-4">uploaded at 2 days ago</div>
+        <div className="mt-9 mr-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">uploaded at 2 days ago</div>
       </div>
       <div>
         <div
