@@ -1,0 +1,30 @@
+
+    .btn {
+        background-image: linear-gradient(45deg, rgb(144, 137, 252), rgb(255, 128, 181));
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+       margin-right: 16px;
+        padding: 10px 40px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;            
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px;
+        display: inline-flex;
+        display: block;
+        margin-right:17px;
+        border-radius: 50px;
+        height: 55px;
+       
+    
+     
+      }
+    
+      .btn:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
