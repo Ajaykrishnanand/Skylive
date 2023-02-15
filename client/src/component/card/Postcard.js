@@ -6,15 +6,16 @@ const Postcard = (props) => {
   const [allvideos, SetAllvideos] = useState([]);
   const [posts, setPost] = useState([]);
   const getPosts = async () => {
-    console.log("hello form the home ..");
+    console.log("hello form the home ...");
     try {
       const { data } = await axios.get("https://dummyjson.com/products");
       const videoList = await axios.post(
         "http://localhost:8081/Videos/all",
         data
       );
-      SetAllvideos(videoList.data);
-      console.log(allvideos);
+      const list =videoList.data;
+      SetAllvideos(list);
+      // console.log(allvideos);
 
       const datais = data.products;
       setPost(datais);
@@ -23,8 +24,8 @@ const Postcard = (props) => {
     }
   };
   useEffect(() => {
-    console.log(posts);
-  }, [posts]);
+    console.log(allvideos);
+  }, [allvideos]);
   useEffect(() => {
     getPosts();
   }, []);
@@ -32,9 +33,9 @@ const Postcard = (props) => {
   return (
     <>
       <div className="grid col-span-2 2xl:pl-40  pl-20 pt-20 grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
-        {posts &&
-          posts.length > 0 &&
-          posts.map((post) => (
+        {allvideos &&
+         allvideos.length > 0 &&
+     allvideos.map((post) => (
             <div className=" p-8 	">
               <div className="card card-compact w-60 h-60 shadow-2xl  ">
                 <figure className="h-full">
@@ -47,7 +48,7 @@ const Postcard = (props) => {
                     <Link to="/player">
                       <div className="avatar">
                         <div className="w-12 rounded-full">
-                          <img src={post.images[3]} />
+                          <img src={post.thumbnail} />
                         </div>
                       </div>
                     </Link>
