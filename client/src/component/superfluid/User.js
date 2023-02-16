@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-
+import Userbtn from "./User.module.scss"
 import { accContext } from "../context/ApplicationContext";
 const SuperTokens = () => {
   const ctx = useContext(accContext);
@@ -24,10 +24,11 @@ const SuperTokens = () => {
     <div className="flex items-center 2xl:ml-[49rem] ml-[22rem]  ">
       <div
         className=" card-compact w-96 bg-transparent
-        border-spacing-2 border-2 border-white shadow-2xl"
+        border-spacing-2 border-2  shadow-2xl rounded-xl"
       >
         {/* line no 25 me class Name me y  {card card-compact w-96 bg-transparent
         border-spacing-2 border-2 border-white shadow-2xl} dalne ke waje se y km ni kr ra tha */}
+        <div >
         <div className="card-body">
           <div className="card-actions justify-start">
             <button
@@ -107,6 +108,7 @@ const SuperTokens = () => {
               {gradeFlag ? "upgarade" : "downgrade"}
             </button>
           </div>
+        </div>
         </div>
       </div>
     </div>
