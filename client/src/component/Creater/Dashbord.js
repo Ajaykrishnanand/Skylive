@@ -25,7 +25,9 @@ const Dashbord = () => {
     );
     console.log(videoList);
     await setVideoData(videoList.data);
+   setTimeout(() => {
     console.log(videoData);
+   }, 2000);
   };
 
   useEffect(() => {
@@ -34,9 +36,10 @@ const Dashbord = () => {
 console.log(flag)
   return (
     <>
+     <div>
     { Channel.map((videoData) =>(
    
-      <div className=" component 2xl:ml-36 w-[66rem] 2xl:w-[100rem]  h-full mt-36 ml-20 overflow-hidden  ">
+      <div className=" component 2xl:ml-36 w-[66rem] 2xl:w-[100rem]   mt-36 ml-20 overflow-hidden  ">
         {/* border-b-2   className=" pt-20  pl-40*/}
         <img
           src={videoData.channelbackground}
@@ -86,9 +89,13 @@ console.log(flag)
         </div>
         <hr className=" flex  pt-20 " />
         <div className="border-r-2 pl-[80rem]"></div>
-        {(flag ==true) && videoData&&
-         videoData.length > 0 &&
-     videoData.map((post) => (
+        </div>
+        ))}
+        <div className="grid col-span-2 2xl:pl-60  pl-20  grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
+        { (flag) &&
+        
+   videoData.map((post)=>
+           ( <Link to="/player">
             <div className=" p-8 	">
               <div className="card card-compact w-60 h-60 shadow-2xl  ">
                 <figure className="h-full">
@@ -98,13 +105,13 @@ console.log(flag)
                 </figure>
                 <div className="card-body h-24 ">
                   <div className="flex justify-between">
-                    <Link to="/player">
+                   
                       <div className="avatar">
                         <div className="w-12 rounded-full">
-                          <img src={post.thumbnail} />
+                          <img src={Channel[0].channelprofile} />
                         </div>
                       </div>
-                    </Link>
+       
 
                     <div>
                       <p className="card-title text-lg ">{post.title}</p>
@@ -112,12 +119,16 @@ console.log(flag)
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-      </div>
+            </div> 
+            </Link>
+           )) 
+           
         
-      ))}
+        }
+        </div> 
+        </div>
     </>
+
   );
 };
 export default Dashbord;
