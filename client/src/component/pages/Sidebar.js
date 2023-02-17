@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { accContext } from "../context/ApplicationContext";
 import { Link } from "react-router-dom";
-
+import cosbtn  from "./Sidebar.module.scss"
 const Sidebar = () => {
   const ctx = useContext(accContext);
   const visible = ctx.sharedState.sidebar;
@@ -22,7 +22,10 @@ const Sidebar = () => {
                 className="ring-2 ring-white mt-4 rounded-xl"
                 to="/"
               >
-                Home
+              <div className={cosbtn.gradientt}>
+              Home
+              </div>
+               
               </Link>
             </li>
             <li className="p-1">
@@ -32,7 +35,9 @@ const Sidebar = () => {
                 className="ring-2 ring-white mt-4 rounded-xl"
                 to="/shorts"
               >
-                Shorts
+               <div className={cosbtn.gradientt}>
+              Shorts
+              </div>
               </Link>
             </li>
 
@@ -44,7 +49,9 @@ const Sidebar = () => {
                 to="/player"
                 onClick={setVisible}
               >
-                Player
+                <div className={cosbtn.gradientt}>
+             Player
+              </div>
               </Link>
             </li>
 
@@ -56,7 +63,9 @@ const Sidebar = () => {
                 to="/user"
                 onClick={setVisible}
               >
-                SWAP
+               <div className={cosbtn.gradientt}>
+              Swap
+              </div>
               </Link>
             </li>
             <li className="p-1">
@@ -67,7 +76,9 @@ const Sidebar = () => {
                 to="/creater"
                 onClick={setVisible}
               >
-                Channel
+               <div className={cosbtn.gradientt}>
+        Channel
+              </div>
               </Link>
             </li>
           </ul>
