@@ -6,6 +6,7 @@ import Dashbtn from "./Dashbord.module.scss";
 const Dashbord = () => {
   const [videoData, setVideoData] = useState([]);
   const[flag,setFlag] = useState(false);
+  const[aboutflag,setaboutFlag] = useState(false);
   const ctx = useContext(accContext);
   const adress = ctx.sharedState.acclogin.accountAddress;
   const Channel = ctx.sharedState.channel;
@@ -61,9 +62,13 @@ console.log(flag)
         </div>
 
         <div className=" flex justify-evenly text-2xl ">
-          <div className={Dashbtn.btn}  onClick={()=>{if(flag){
+          <div className={Dashbtn.btn}  onClick={()=>{if(aboutflag){
+          
+            setaboutFlag(false)
+          } 
+          if(flag){
             setFlag(false)
-          } else{
+          }else{
             setFlag(true)
           }}}>videos</div>
 
@@ -84,7 +89,16 @@ console.log(flag)
             Upload
           </Link>
           <div className="pl-10">
-            <h4 className={Dashbtn.btn}>about</h4>
+            <h4 className={Dashbtn.btn}
+            onClick={()=>{if(flag){
+            setFlag(false)
+           
+          } 
+          if(aboutflag){
+            setaboutFlag(false)
+          }else{
+           setaboutFlag(true)
+          }}}>about</h4>
           </div>
         </div>
         <hr className=" flex  pt-20 " />
@@ -126,6 +140,37 @@ console.log(flag)
         
         }
         </div> 
+        {/* about */}
+        <div>{
+          (aboutflag)&&(
+            <div className="flex ">
+            <div>
+            <div>
+            about : {Channel[0].about}
+          </div>
+          <div>
+           instagram : {Channel[0].ig}
+          </div>
+          <div>
+            facebook : {Channel[0].fb}
+          </div>
+          <div>
+           tweetr: {Channel[0].tweetr}
+          </div>
+          <div>
+           personal websight : {Channel[0].prsonalWebsight}
+          </div>
+          <div>
+            others : {Channel[0].others}
+          </div>
+          </div>
+          <div>channel created at : {Channel[0].createdAt}</div>
+          </div>
+          
+          )
+        }
+          
+        </div>
         </div>
     </>
 
