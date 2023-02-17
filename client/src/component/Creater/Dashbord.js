@@ -145,12 +145,16 @@ console.log(flag)
           (aboutflag)&&(
 
             <div className="flex  justify-center">
-            <div className=" border-2 border-dashed border-base-200 rounded-3xl h-[25rem] w-[50rem] flex justify-evenly">
-            <div>
+            <div className="  border-base-200 rounded-3xl h-[25rem] w-[50rem] flex justify-evenly">
+            <div >
+            {/* className={Dashbtn.border} */}
             <div className="ml-20">
-            <div className={Dashbtn.gradientt}>
+            {/* <div className={Dashbtn.line}></div> */}
+            <div className={Dashbtn.gradientt} >
+            {/* className={Dashbtn.gradientt} */}
             about : {Channel[0].about}
           </div>
+          
           <div className={Dashbtn.gradientt}>
            instagram : {Channel[0].ig}
           </div>
@@ -158,7 +162,7 @@ console.log(flag)
             facebook : {Channel[0].fb}
           </div>
           <div className={Dashbtn.gradientt}>
-           tweetr: {Channel[0].tweetr}
+           tweetr: {Channel[0].tweeter}
           </div>
           <div className={Dashbtn.gradientt}>
            personal websight : {Channel[0].prsonalWebsight}
@@ -169,6 +173,7 @@ console.log(flag)
         
           </div>
           <div className="ml-[30rem] "> <div className={Dashbtn.gradientt}>channel created at : {Channel[0].createdAt}</div></div>
+          <div className={Dashbtn.line}></div>
           </div>
           </div>
           </div>
