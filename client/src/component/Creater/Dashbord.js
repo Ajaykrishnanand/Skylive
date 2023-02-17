@@ -102,7 +102,7 @@ const Dashbord = () => {
         <div className="grid col-span-2 2xl:pl-60  pl-20  grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
           {flag &&
             videoData.map((post) => (
-              <Link to={"/player/" + post.playerid}>
+              <Link to="/player">
                 <div className=" p-8 	">
                   <div className="card card-compact w-60 h-60 shadow-2xl  ">
                     <figure className="h-full">
@@ -127,6 +127,43 @@ const Dashbord = () => {
                 </div>
               </Link>
             ))}
+        </div>
+        {/* about */}
+        <div>
+          {aboutflag && (
+            <div className="flex  justify-center">
+              <div className=" border-2 border-dashed border-base-200 rounded-3xl h-[25rem] w-[50rem] flex justify-evenly">
+                <div>
+                  <div className="ml-20">
+                    <div className={Dashbtn.gradientt}>
+                      about : {Channel[0].about}
+                    </div>
+                    <div className={Dashbtn.gradientt}>
+                      instagram : {Channel[0].ig}
+                    </div>
+                    <div className={Dashbtn.gradientt}>
+                      facebook : {Channel[0].fb}
+                    </div>
+                    <div className={Dashbtn.gradientt}>
+                      tweetr: {Channel[0].tweetr}
+                    </div>
+                    <div className={Dashbtn.gradientt}>
+                      personal websight : {Channel[0].prsonalWebsight}
+                    </div>
+                    <div className={Dashbtn.gradientt}>
+                      others : {Channel[0].others}
+                    </div>
+                  </div>
+                  <div className="ml-[30rem] ">
+                    {" "}
+                    <div className={Dashbtn.gradientt}>
+                      channel created at : {Channel[0].createdAt}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
