@@ -13,7 +13,7 @@ const Postcard = (props) => {
         "http://localhost:8081/Videos/all",
         data
       );
-      const list =videoList.data;
+      const list = videoList.data;
       SetAllvideos(list);
       // console.log(allvideos);
 
@@ -34,32 +34,34 @@ const Postcard = (props) => {
     <>
       <div className="grid col-span-2 2xl:pl-40  pl-20 pt-20 grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
         {allvideos &&
-         allvideos.length > 0 &&
-     allvideos.map((post) => (
-            <div className=" p-8 	">
-              <div className="card card-compact w-60 h-60 shadow-2xl  ">
-                <figure className="h-full">
-                  <a href={post.thumbnail}>
-                    <img src={post.thumbnail} onClick={post.thumbnail} />
-                  </a>
-                </figure>
-                <div className="card-body h-24 ">
-                  <div className="flex justify-between">
-                    <Link to="/player">
-                      <div className="avatar">
-                        <div className="w-12 rounded-full">
-                          <img src={post.thumbnail} />
+          allvideos.length > 0 &&
+          allvideos.map((post) => (
+            <Link to={"/player/" + post.playerid}>
+              <div className=" p-8 	">
+                <div className="card card-compact w-60 h-60 shadow-2xl  ">
+                  <figure className="h-full">
+                    <a href={post.thumbnail}>
+                      <img src={post.thumbnail} onClick={post.thumbnail} />
+                    </a>
+                  </figure>
+                  <div className="card-body h-24 ">
+                    <div className="flex justify-between">
+                      <Link to="/player">
+                        <div className="avatar">
+                          <div className="w-12 rounded-full">
+                            <img src={post.thumbnail} />
+                          </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
 
-                    <div>
-                      <p className="card-title text-lg ">{post.title}</p>
+                      <div>
+                        <p className="card-title text-lg ">{post.title}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
       </div>
     </>

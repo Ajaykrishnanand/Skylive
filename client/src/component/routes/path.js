@@ -11,6 +11,7 @@ import Home from "../pages/home";
 import Sorts from "../livepeer/Sorts";
 import OBS from "../livepeer/LiveOBS";
 import Camera from "../livepeer/cameralive";
+import UserCreater from "../User/Creater";
 const Path = () => {
   return (
     <Routes>
@@ -18,7 +19,7 @@ const Path = () => {
 
       <Route exact path="/user" element={<User />} />
       <Route exact path="/upload" element={<Upload />} />
-      <Route exact path="/player" element={<Player />} />
+      <Route exact path="/player/:playerID" element={<Player />} />
       <Route exact path="/creater" element={<Creater />} />
       <Route exact path="/uploadcard" element={<Uploadcard />} />
       <Route exact path="/live" element={<Live />} />
@@ -27,6 +28,7 @@ const Path = () => {
       <Route exact path="/shorts" element={<Sorts />} />
       <Route exact path="/obs" element={<OBS />} />
       <Route exact path="/camera" element={<Camera />} />
+      <Route exact path="/userCreater" element={<UserCreater />} />
     </Routes>
   );
 };
