@@ -145,7 +145,7 @@ console.log(flag)
           (aboutflag)&&(
 
             <div className="flex  justify-center">
-            <div className=" card h-[20rem] w-[50rem] flex justify-evenly">
+            <div className=" border-2 border-dashed border-base-200 rounded-3xl h-[25rem] w-[50rem] flex justify-evenly">
             <div>
             <div className="ml-20">
             <div className={Dashbtn.gradientt}>
