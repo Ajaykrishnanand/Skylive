@@ -143,28 +143,34 @@ console.log(flag)
         {/* about */}
         <div>{
           (aboutflag)&&(
-            <div className="flex ">
+
+            <div className="flex  justify-center">
+            <div className=" card h-[20rem] w-[50rem] flex justify-evenly">
             <div>
-            <div>
+            <div className="ml-20">
+            <div className={Dashbtn.gradientt}>
             about : {Channel[0].about}
           </div>
-          <div>
+          <div className={Dashbtn.gradientt}>
            instagram : {Channel[0].ig}
           </div>
-          <div>
+          <div className={Dashbtn.gradientt}>
             facebook : {Channel[0].fb}
           </div>
-          <div>
+          <div className={Dashbtn.gradientt}>
            tweetr: {Channel[0].tweetr}
           </div>
-          <div>
+          <div className={Dashbtn.gradientt}>
            personal websight : {Channel[0].prsonalWebsight}
           </div>
-          <div>
+          <div className={Dashbtn.gradientt}>
             others : {Channel[0].others}
           </div>
+        
           </div>
-          <div>channel created at : {Channel[0].createdAt}</div>
+          <div className="ml-[30rem] "> <div className={Dashbtn.gradientt}>channel created at : {Channel[0].createdAt}</div></div>
+          </div>
+          </div>
           </div>
           
           )
