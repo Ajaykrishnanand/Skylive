@@ -1,27 +1,56 @@
 import { Player } from "@livepeer/react";
 import btnscss from "./player.module.scss";
-import { useParams } from "react-router-dom";
+import { useHref, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 function PlayerComponent() {
+  const [videodata, setVideodata] = useState({});
+  const [channel, setChannel] = useState([]);
   const { playerID } = useParams();
   console.log(playerID);
+  async function checkalldetails() {
+    const data = {
+      playerid: playerID,
+    };
+    try {
+      const datais = await axios.post("http://localhost:8081/Videos/id", data);
+      setVideodata(datais.data[0]);
+      console.log(datais.data[0]);
+      const thisdata = {
+        adress: datais.data[0].address,
+      };
+      const channaldata = await axios.post(
+        "http://localhost:8081/Creaters/adress",
+        thisdata
+      );
+      setChannel(channaldata.data[0]);
+      console.log(channaldata.data[0]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  useEffect(() => {
+    checkalldetails();
+  }, [playerID]);
   return (
     <div className=" grid grid-cols-9 component 2xl:ml-[19rem] ml-[60px] mt-24 2xl:w-[80rem]  w-[60rem] h-[26rem]  2xl:h-full 2xl:pt-auto ">
       {" "}
       <div className="  col-span-6 ">
         <Player
-          title="Agent 327: Operation Barbershop"
+          title={videodata.title}
           playbackId={playerID}
-          // poster="/images/blender-poster.png"
+          poster
+          useHref={videodata.thumbnail}
         />
-        <div className="flex pt-4 pl-[2px] ">video name </div>
+        <div className="flex pt-4 pl-[2px] ">{videodata.title} </div>
         <div className="flex justify-evenly  mt-10  bg-base-200 rounded-box">
           <div className="flex  flex-1">
             <div className="avatar mt-2 ml-2 mb-2   ">
               <div className="w-24 h-24 rounded-full">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG_IRHIHRvCijJ7Aaxka7bAWR9ayZxYiwKbb2QAGifRw&s" />
+                <img src={channel.channelprofile} />
               </div>
             </div>
-            <div className="mr-4 mt-9 ml-7">channel name</div>
+            <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
             <button
               className={btnscss.btn}
               onClick={() => {
@@ -55,9 +84,7 @@ function PlayerComponent() {
               description ....
             </div>
             <div className="collapse-content">
-              <p>
-                tabIndex={0} attribute is necessary to make the div focusable
-              </p>
+              <p>{videodata.description}</p>
             </div>
           </div>
         </div>

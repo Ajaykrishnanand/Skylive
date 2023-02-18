@@ -6,6 +6,7 @@ import Dashbtn from "./Dashbord.module.scss";
 const Dashbord = () => {
   const [videoData, setVideoData] = useState([]);
   const [flag, setFlag] = useState(false);
+  const [aboutflag, setSboutflag] = useState(false);
   const ctx = useContext(accContext);
   const adress = ctx.sharedState.acclogin.accountAddress;
   const Channel = ctx.sharedState.channel;
@@ -92,7 +93,18 @@ const Dashbord = () => {
                 Upload
               </Link>
               <div className="pl-10">
-                <h4 className={Dashbtn.btn}>about</h4>
+                <h4
+                  className={Dashbtn.btn}
+                  onClick={() => {
+                    setSboutflag(!aboutflag);
+                    setTimeout(() => {
+                      console.log(aboutflag);
+                    });
+                    setFlag(false);
+                  }}
+                >
+                  about
+                </h4>
               </div>
             </div>
             <hr className=" flex  pt-20 " />
@@ -102,7 +114,7 @@ const Dashbord = () => {
         <div className="grid col-span-2 2xl:pl-60  pl-20  grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
           {flag &&
             videoData.map((post) => (
-              <Link to="/player">
+              <Link to={"/player/" + post.playerid}>
                 <div className=" p-8 	">
                   <div className="card card-compact w-60 h-60 shadow-2xl  ">
                     <figure className="h-full">
