@@ -11,19 +11,38 @@ import {
 } from "@livepeer/react";
 import Wrapper, { accContext } from "./component/context/ApplicationContext";
 import Sidebar from "./component/pages/Sidebar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { providers } from "ethers";
 
 const provider = new AuthProvider("b373797fae6275c96ac63108a0733bf78ac1863f");
-const onLogin = () => {};
+
 
 const client = createReactClient({
   provider: studioProvider({ apiKey: "55b8d283-5a19-4dc0-b6c6-3ac3f00dbd29" }),
 });
 function App() {
+  const [flag ,setFlag] = useState(false)
   const ctx = useContext(accContext);
   const sidebar = ctx.sharedState.sidebar;
-  if (sidebar) {
+  const arcanaAuth=async ()=>{
+    try {
+      await provider.init()
+  
+      const arcanaProvider = provider.loginWithSocial('google')
+      const info = await provider.getUser()
+      const isloggedIn = await provider.isLoggedIn()
+      if(isloggedIn){
+        setFlag(true)
+      }
+      await provider.logout()
+      console.log(info)
+     
+    } catch (e) {
+  console.log(e)
+    }
   }
+  
+  
   return (
     <Wrapper>
       <div class="isolate bg-white static">
@@ -53,7 +72,7 @@ function App() {
             </defs>
           </svg>
         </div>
-        <div className=" flex   ">
+      {(flag)&& ( <div className=" flex   ">
           <LivepeerConfig client={client}>
             {" "}
             <div>
@@ -67,22 +86,24 @@ function App() {
               <Path />
             </div>
           </LivepeerConfig>
+        </div>)}
+      </div>
+      {(flag===false)&&(<ProvideAuth provider={provider}>
+      
+      <div>
+        <div className="pt-40">
+          <Auth
+            externalWallet={true}
+            theme={"dark"}
+            className="outline"
+            onLogin={ arcanaAuth}
+          
+          />
         </div>
       </div>
+    </ProvideAuth>)}
     </Wrapper>
-    // <ProvideAuth provider={provider}>
-    //   |
-    //   <div>
-    //     <div className="pt-40">
-    //       <Auth
-    //         externalWallet={true}
-    //         theme={"dark"}
-    //         className="outline"
-    //         onLogin={onLogin}
-    //       />
-    //     </div>
-    //   </div>
-    // </ProvideAuth>
+   
   );
 }
 
