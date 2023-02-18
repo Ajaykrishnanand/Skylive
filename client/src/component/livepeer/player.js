@@ -7,6 +7,9 @@ import axios from "axios";
 function PlayerComponent() {
   const [videodata, setVideodata] = useState({});
   const [channel, setChannel] = useState([]);
+  const [joinflag, setJoinflag]= useState(true);
+  const [subscribeflag, setsubscribeflag]= useState(true);
+
   const { playerID } = useParams();
   console.log(playerID);
   const PosterImage = () => {
@@ -61,24 +64,36 @@ function PlayerComponent() {
               </div>
             </div>
             <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
-            <button
+
+       <button
               className={btnscss.btn}
               onClick={() => {
-                console.log("the subscribe buttton is clicked  ");
+                if(subscribeflag){
+                  setsubscribeflag(false)
+                }else{
+                 setsubscribeflag(true)
+                }
               }}
             >
-              subscribe
+           { (subscribeflag) ? ( " subscribe"):(" unsubscribe")}
             </button>
+           
 
-            <button
+       <button
               className={btnscss.btn}
               onClick={() => {
-                console.log("the join is  button clicked  ");
-              }}
+                if(joinflag){
+               setJoinflag(false)
+                }else{
+                setJoinflag(true)
+                }
+              }
+              }
             >
               {" "}
-              join{" "}
+              { (joinflag) ? (  "join"):(" joined")}{" "}
             </button>
+          
           </div>
 
           <div className="mt-9 mr-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
