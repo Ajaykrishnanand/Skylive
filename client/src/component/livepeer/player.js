@@ -1,5 +1,6 @@
 import { Player } from "@livepeer/react";
 import btnscss from "./player.module.scss";
+
 import { useHref, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,6 +9,14 @@ function PlayerComponent() {
   const [channel, setChannel] = useState([]);
   const { playerID } = useParams();
   console.log(playerID);
+  const PosterImage = () => {
+    return (
+      <div>
+        <img src={videodata.thumbnail} />
+      </div>
+    );
+  };
+
   async function checkalldetails() {
     const data = {
       playerid: playerID,
@@ -29,6 +38,8 @@ function PlayerComponent() {
       console.log(e);
     }
   }
+
+  function handlesubscribe() {}
   useEffect(() => {
     checkalldetails();
   }, [playerID]);
@@ -39,8 +50,7 @@ function PlayerComponent() {
         <Player
           title={videodata.title}
           playbackId={playerID}
-          poster
-          useHref={videodata.thumbnail}
+          poster={<PosterImage />}
         />
         <div className="flex pt-4 pl-[2px] ">{videodata.title} </div>
         <div className="flex justify-evenly  mt-10  bg-base-200 rounded-box">
