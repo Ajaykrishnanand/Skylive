@@ -2,6 +2,7 @@ import { Auth, useAuth } from "@arcana/auth-react";
 import { AuthProvider } from "@arcana/auth";
 import { ProvideAuth } from "@arcana/auth-react";
 import Path from "./component/routes/path";
+import { ethers } from "ethers";
 import Navbar from "./component/pages/navbar";
 import Upload from "./component/livepeer/upload";
 import {
@@ -23,23 +24,40 @@ const client = createReactClient({
 function App() {
   const [flag ,setFlag] = useState(false)
   const ctx = useContext(accContext);
-  const sidebar = ctx.sharedState.sidebar;
+  const signer = null;
   const arcanaAuth=async ()=>{
     try {
       await provider.init()
   
       const arcanaProvider = provider.loginWithSocial('google')
       const info = await provider.getUser()
+      console.log(info)
       const isloggedIn = await provider.isLoggedIn()
       if(isloggedIn){
         setFlag(true)
       }
-      await provider.logout()
-      console.log(info)
-     
+       
     } catch (e) {
   console.log(e)
     }
+  }
+  const externalWallet =()=>{
+    const external=async()=>{
+    try {
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      ctx.sharedState.setData(provider, signer, accounts[0]);
+      if(accounts[0]!==null){
+        setFlag(true);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  external();
   }
   
   
@@ -93,8 +111,7 @@ function App() {
       <div>
         <div className="pt-40">
           <Auth
-            externalWallet={true}
-            theme={"dark"}
+          onClick={ externalWallet}
             className="outline"
             onLogin={ arcanaAuth}
           
