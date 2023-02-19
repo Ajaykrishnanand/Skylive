@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { accContext } from "../context/ApplicationContext";
 import { Link } from "react-router-dom";
-import cosbtn  from "./Sidebar.module.scss"
+import cosbtn from "./Sidebar.module.scss";
 const Sidebar = () => {
   const ctx = useContext(accContext);
   const visible = ctx.sharedState.sidebar;
@@ -22,10 +22,7 @@ const Sidebar = () => {
                 className="ring-2 ring-white mt-4 rounded-xl"
                 to="/"
               >
-              <div className={cosbtn.gradientt}>
-              Home
-              </div>
-               
+                <div className={cosbtn.gradientt}>Home</div>
               </Link>
             </li>
             <li className="p-1">
@@ -35,9 +32,7 @@ const Sidebar = () => {
                 className="ring-2 ring-white mt-4 rounded-xl"
                 to="/shorts"
               >
-               <div className={cosbtn.gradientt}>
-              Shorts
-              </div>
+                <div className={cosbtn.gradientt}>Shorts</div>
               </Link>
             </li>
 
@@ -49,9 +44,7 @@ const Sidebar = () => {
                 to="/player"
                 onClick={setVisible}
               >
-                <div className={cosbtn.gradientt}>
-             Player
-              </div>
+                <div className={cosbtn.gradientt}>Player</div>
               </Link>
             </li> */}
 
@@ -63,9 +56,7 @@ const Sidebar = () => {
                 to="/user"
                 onClick={setVisible}
               >
-               <div className={cosbtn.gradientt}>
-              Swap
-              </div>
+                <div className={cosbtn.gradientt}>Swap</div>
               </Link>
             </li>
             <li className="p-1">
@@ -76,9 +67,7 @@ const Sidebar = () => {
                 to="/creater"
                 onClick={setVisible}
               >
-               <div className={cosbtn.gradientt}>
-        Channel
-              </div>
+                <div className={cosbtn.gradientt}>Channel</div>
               </Link>
             </li>
             <li className="p-1">
@@ -89,9 +78,7 @@ const Sidebar = () => {
                 to="/subscribers"
                 onClick={setVisible}
               >
-               <div className={cosbtn.gradientt}>
-              total following
-              </div>
+                <div className={cosbtn.gradientt}>total following</div>
               </Link>
             </li>
           </ul>

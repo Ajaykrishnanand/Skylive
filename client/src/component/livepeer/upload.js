@@ -12,6 +12,7 @@ function Main() {
   const [video, setVideo] = useState("");
   const thumbnailRef = useRef("");
   const TitleInputRef = useRef();
+  const channel = ctx.sharedState.channel;
   const descriptionInputRef = useRef();
   const Uploadall = async (videos) => {
     const url = videos.substring(62);
@@ -21,6 +22,7 @@ function Main() {
       thumbnail: thumbnailRef.current.value,
       playerid: url,
       totalview: "0",
+      createrprofile: channel.channelprofile,
       free: flag,
       title: TitleInputRef.current.value,
     };
@@ -98,11 +100,9 @@ function Main() {
         onSubmit={formSubmitHandler}
         encType="multipart/form-data"
       >
-      <div className="flex justify-center">
-        <img src={upload} className="h-[240px] w-[240px]">
-
-        </img>
-      </div>
+        <div className="flex justify-center">
+          <img src={upload} className="h-[240px] w-[240px]"></img>
+        </div>
         {/* <div className="flex items-center justify-center w-full">
           <label
             htmlFor="dropzone-file"

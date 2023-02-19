@@ -44,11 +44,11 @@ function PlayerComponent() {
       playerid: playerID,
     };
     try {
-      const datais = await axios.post("http://localhost:8081/Videos/id", data);
+      const datais = await axios.post("http://localhost:8081/Lives/id", data);
       setVideodata(datais.data[0]);
       console.log(datais.data[0]);
       const thisdata = {
-        adress: datais.data[0].address,
+        adress: id,
       };
       const channaldata = await axios.post(
         "http://localhost:8081/Creaters/adress",
@@ -133,6 +133,7 @@ function PlayerComponent() {
     checkalldetails();
   }, [playerID]);
   return (
+    // <div>wcfordhohi</div>
     <div className=" grid grid-cols-9 component 2xl:ml-[19rem] ml-[60px] mt-24 2xl:w-[80rem]  w-[60rem] h-[26rem]  2xl:h-full 2xl:pt-auto ">
       {" "}
       <div className="  col-span-6 ">
@@ -171,47 +172,24 @@ function PlayerComponent() {
               <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
             </Link>
 
-            {subscribeflag ? (
-              <button
-                className={btnscss.btn}
-                onClick={() => {
-                  handlesubscribe();
-                }}
-              >
-                subscribe
-              </button>
-            ) : (
-              <button
-                className={btnscss.btnc}
-                onClick={() => {
-                  handlesubscribe();
-                }}
-              >
-                unsubscribe
-              </button>
-            )}
+            <button
+              className={btnscss.btn}
+              onClick={() => {
+                handlesubscribe();
+              }}
+            >
+              {subscribeflag ? " subscribe" : " unsubscribe"}
+            </button>
 
-            {joinflag ? (
-              <button
-                className={btnscss.btn}
-                onClick={() => {
-                  handaleJoin();
-                }}
-              >
-                {" "}
-                join
-              </button>
-            ) : (
-              <button
-                className={btnscss.btnc}
-                onClick={() => {
-                  handaleJoin();
-                }}
-              >
-                {" "}
-                joined
-              </button>
-            )}
+            <button
+              className={btnscss.btn}
+              onClick={() => {
+                handaleJoin();
+              }}
+            >
+              {" "}
+              {joinflag ? "join" : " joined"}{" "}
+            </button>
           </div>
 
           <div className="mt-9 mr-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
@@ -237,12 +215,12 @@ function PlayerComponent() {
           <div>
             ads
             <img
-              src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1a4acb72962375.5bf998731ce06.jpg"
+              src="https://i.dummyjson.com/data/products/2/thumbnail.jpg"
               className=" h-96 w-auto "
             ></img>
           </div>
         )}
-      </div>
+      </div>{" "}
     </div>
   );
 }

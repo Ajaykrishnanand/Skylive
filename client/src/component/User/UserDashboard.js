@@ -6,7 +6,7 @@ import Dashbtn from "./Dashbord.module.scss";
 const Dashbord = () => {
   const [videoData, setVideoData] = useState([]);
   const [Channel, setChannel] = useState([]);
-  const [flag, setFlag] = useState(false);
+  const [flag, setFlag] = useState(true);
   const [aboutflag, setSboutflag] = useState(false);
   const ctx = useContext(accContext);
   const { address } = useParams();
@@ -71,10 +71,13 @@ const Dashbord = () => {
               <div
                 className={Dashbtn.btn}
                 onClick={() => {
+                  console.log(flag);
                   if (flag) {
                     setFlag(false);
+                    setSboutflag(true);
                   } else {
                     setFlag(true);
+                    setSboutflag(false);
                   }
                 }}
               >
@@ -85,11 +88,13 @@ const Dashbord = () => {
                 <h4
                   className={Dashbtn.btn}
                   onClick={() => {
-                    setSboutflag(!aboutflag);
-                    setTimeout(() => {
-                      console.log(aboutflag);
-                    });
-                    setFlag(false);
+                    if (aboutflag) {
+                      setSboutflag(false);
+                      setFlag(true);
+                    } else {
+                      setSboutflag(true);
+                      setFlag(false);
+                    }
                   }}
                 >
                   about

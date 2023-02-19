@@ -1,9 +1,10 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useRef, useContext } from "react";
 
 import { accContext } from "../context/ApplicationContext";
 function LiveStreaming() {
+  const navigate = useNavigate();
   const ctx = useContext(accContext);
   const name = useRef("");
   const Discription = useRef("");
@@ -13,26 +14,11 @@ function LiveStreaming() {
   const [flag, setFlag] = useState(false);
   const [freeflag, setFreeflag] = useState(false);
   const adress = ctx.sharedState.acclogin.accountAddress;
-
-  const UploadLiveStream = async () => {
-    const data = {
-      adress,
-      streamKey,
-      playbackId,
-      Thumbnail,
-      Discription,
-      free: freeflag,
-    };
-    console.log(data);
-    try {
-      const datais = await axios.post("http://localhost:8081/Lives", data);
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  const channel = ctx.sharedState.channel;
+  console.log(channel);
   async function LiveStream() {
     const data = {
-      name: name,
+      name: name.current.value,
       record: flag,
       profiles: [
         {
@@ -65,12 +51,22 @@ function LiveStreaming() {
           authorization: `Bearer ${"55b8d283-5a19-4dc0-b6c6-3ac3f00dbd29"}`,
         },
       });
-      console.log(ans.data);
+
+      const dataf = {
+        address: adress,
+        description: Discription.current.value,
+        thumbnail: Thumbnail.current.value,
+        playerid: ans.data.playbackId,
+        title: name.current.value,
+        totalview: "0",
+        createrprofile: channel.channelprofile,
+        free: freeflag,
+      };
+
+      const datais = await axios.post("http://localhost:8081/Lives", dataf);
+      console.log(datais);
       setPlaybackId(ans.data.playbackId);
       setStreamKey(ans.data.streamKey);
-      setTimeout(() => {
-        UploadLiveStream();
-      }, 3000);
 
       console.log(ans.data.streamKey);
     } catch (err) {
@@ -84,46 +80,8 @@ function LiveStreaming() {
       <div className="flex items-center  ">
         <form
           className="form-control       grid col-span-2 2xl:h-[40rem] h-[33rem] w-[50rem] border-dashed border-[6px] rounded-[60px] text-black border-base-200 mt-40 place-items-center container mx-auto ml-[14rem] 2xl:ml-[36rem]  "
-          // onSubmit={formSubmitHandler}
           encType="multipart/form-data"
         >
-          {/* <div className="flex items-center justify-center w-full">
-            <label
-              htmlFor="dropzone-file"
-              className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-[30px] cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-            >
-              <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                <svg
-                  aria-hidden="true"
-                  className="w-10 h-10 mb-3 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
-                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                  <span className="font-semibold">Click to upload</span> or drag
-                  and drop
-                </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  SVG, PNG, JPG or GIF (MAX. 800x400px)
-                </p>
-              </div>
-              <input
-                id="dropzone-file"
-                type="file"
-                className="hidden"
-                //    onChange={showname}
-              />
-            </label>
-          </div> */}
           <div className="flex justify-between gap-10">
             <div>
               <div>
@@ -171,14 +129,15 @@ function LiveStreaming() {
                 <label className="label">
                   <span className="label-text pl-2 ">Video</span>
                 </label>
-                <button
+                <div
                   className={`btn bg-white text-black border-base-200 `}
-                  onClick={LiveStream}
+                  onClick={() => {
+                    LiveStream();
+                  }}
                   style={{ marginTop: "7%" }}
                 >
                   generate Key
-                </button>
-                <hr></hr>
+                </div>
               </div>
             </div>
           </div>
@@ -206,6 +165,15 @@ function LiveStreaming() {
             style={{ width: "190px" }}
           >
             click to record
+          </button>
+          <button
+            className="btn btn-ghost"
+            onClick={() => {
+              navigate("/liveplayer/" + playbackId + "/" + adress);
+            }}
+            style={{ width: "190px" }}
+          >
+            watch live
           </button>
         </form>
       </div>
