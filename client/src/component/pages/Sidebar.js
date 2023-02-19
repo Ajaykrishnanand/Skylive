@@ -78,7 +78,7 @@ const Sidebar = () => {
                 to="/subscribers"
                 onClick={setVisible}
               >
-                <div className={cosbtn.gradientt}>total following</div>
+                <div className={cosbtn.gradientt}>total subscriptions</div>
               </Link>
             </li>
           </ul>
