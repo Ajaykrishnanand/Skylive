@@ -16,7 +16,9 @@
   
       
     
-</div>
+</div
+    | skylive is a d-centralise video streaming platform can ensure that content is not censored or removed by any central authority this is especially important for controversial or politics sensitive content that may be target by government or other powerful entity|
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |>
 ## 🛠 Install
 
 Clone this repository:
@@ -33,13 +35,7 @@ cd client
 npm install
 ```
 
-### Code quality and formatting
 
-Run [ESLint](https://eslint.org/) to analyze the code and catch bugs:
-
-```bash
-npm lint
-```
 
 Run [Prettier](https://prettier.io/) to check formatting rules:
 
@@ -55,13 +51,4 @@ yarn prettier:write
 
 ### Conventional commits
 
-```bash
-yarn commit
-
-
-
-
-
-
-`
 
