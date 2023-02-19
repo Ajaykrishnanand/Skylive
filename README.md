@@ -8,11 +8,11 @@
     </h1>
 </p>
 <div align="center">
-    
+    <h4>
         <a href="https://github.com/Ajay12-p/Skylive/issues">
             👥 Contributing
         </a>
-        
+    </h4>   
   
       
     
