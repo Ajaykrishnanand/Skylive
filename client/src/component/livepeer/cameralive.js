@@ -44,7 +44,7 @@ function App() {
     };
     console.log(data);
     try {
-      const datais = await axios.post("http://localhost:8081/Lives", data);
+      const datais = await axios.post("https://skylive.onrender.com/Lives", data);
     } catch (e) {
       console.log(e);
     }
@@ -125,7 +125,8 @@ function App() {
   return (
     <>
       <div className="App flex place-items-center ">
-        <div className="2xl:ml-[650px] mt-[5rem]  ml-[90px] ">
+      <div className={LiveButton.back}>
+        <div className="2xl:ml-[650px] mt-[5rem] border-[7px] border-dotted bg-base-200 rounded-lg ml-[90px] ">
           <video className="App-video rounded-xl " ref={videoEl} />
           <div className="flex justify-evenly pt-10">
             <div>
@@ -184,7 +185,7 @@ function App() {
                     console.log(freeflag + "hofwehfoaefhoh");
                   }}
                 />{" "}
-                <span className="label-text">
+                <span className="label-text text-primary ">
                   Check this box if you want to do private live stream
                 </span>
               </label>
@@ -212,6 +213,7 @@ function App() {
               start your live stream
             </button>
           </div>
+        </div>
         </div>
       </div>
     </>
