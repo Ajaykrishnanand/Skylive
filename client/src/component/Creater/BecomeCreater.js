@@ -30,7 +30,7 @@ function Main() {
     alert(data.name);
 
     try {
-      const datais = await axios.post("http://localhost:8081/Creaters", data);
+      const datais = await axios.post("https://skylive.onrender.com/Creaters", data);
 
       navigate("/creater");
 
