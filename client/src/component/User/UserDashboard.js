@@ -16,7 +16,7 @@ const Dashbord = () => {
       adress: address,
     };
     const dataforchannel = await axios.post(
-      "http://localhost:8081/Creaters/adress",
+      "https://skylive.onrender.com/Creaters/adress",
       data
     );
     console.log(dataforchannel);
@@ -26,7 +26,7 @@ const Dashbord = () => {
       address: address,
     };
     const videoList = await axios.post(
-      "http://localhost:8081/Videos/adress",
+      "https://skylive.onrender.com/Videos/adress",
       datais
     );
     console.log(videoList);
