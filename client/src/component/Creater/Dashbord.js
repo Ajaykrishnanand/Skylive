@@ -15,13 +15,13 @@ const Dashbord = () => {
       address: adress,
     };
     const dataforchannel = await axios.post(
-      "http://localhost:8081/Creaters/adress",
+      "https://skylive.onrender.com/Creaters/adress",
       data
     );
     console.log(dataforchannel);
     console.log(Channel);
     const videoList = await axios.post(
-      "http://localhost:8081/Videos/adress",
+      "https://skylive.onrender.com/Videos/adress",
       data
     );
     console.log(videoList);
@@ -121,7 +121,7 @@ const Dashbord = () => {
               <Link to={"/player/" + post.playerid + "/" + post.address}>
                 <div className=" p-8 	">
                   <div className="card card-compact w-60 h-60 shadow-2xl  ">
-                    <figure className="h-full">
+                    <figure>
                       <a href={post.thumbnail}>
                         <img src={post.thumbnail} onClick={post.thumbnail} />
                       </a>
@@ -129,7 +129,7 @@ const Dashbord = () => {
                     <div className="card-body h-24 ">
                       <div className="flex justify-between">
                         <div className="avatar">
-                          <div className="w-12 rounded-full">
+                          <div className="w-12 h-12 rounded-full">
                             <img src={Channel[0].channelprofile} />
                           </div>
                         </div>
