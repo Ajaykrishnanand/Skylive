@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import styles from "./Postcard.module.scss"
 const Postcard = (props) => {
   const [allvideos, SetAllvideos] = useState([]);
   const [livelist, setLivelist] = useState([]);
@@ -39,8 +39,16 @@ const Postcard = (props) => {
   }, []);
 
   return (
-    <>
-      <div className="grid col-span-2 2xl:pl-40  pl-20 pt-20 grid-cols-3 2xl:grid-cols-4 place-content-center  divide-y  gap-4">
+       
+
+
+    <> 
+     <div className="pt-32">
+        <div className={styles.gradientt}> uploaded  videos </div>
+    </div>
+   
+      <div className="grid col-span-2 2xl:pl-40  pl-20  grid-cols-3 2xl:grid-cols-4 place-content-center  divide-y  gap-4">
+  
         {allvideos &&
           allvideos.length > 0 &&
           allvideos.map((post) => (
@@ -71,15 +79,19 @@ const Postcard = (props) => {
               </div>
             </Link>
           ))}
-      </div>
+      </div> 
+   
 
-      <div className="grid col-span-2 2xl:pl-40  pl-20 pt-20 grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
+ 
+   <div className={styles.gradientt}> live recorded videos </div>
+
+      <div className="grid col-span-2 2xl:pl-40  pl-20  grid-cols-3 2xl:grid-cols-4 place-content-center  divide-y  gap-4">
         {livelist &&
           livelist.length > 0 &&
           livelist.map((post) => (
             <Link to={"/liveplayer/" + post.playerid + "/" + post.address}>
               <div className=" p-8 	">
-                <div className="card card-compact w-60 h-60 shadow-2xl  ">
+                <div className="card card-compact w-92 h-60 shadow-2xl  ">
                   <figure className="h-full">
                     <a href={post.thumbnail}>
                       <img src={post.thumbnail} onClick={post.thumbnail} />
@@ -105,6 +117,7 @@ const Postcard = (props) => {
             </Link>
           ))}
       </div>
+     
     </>
   );
 };
