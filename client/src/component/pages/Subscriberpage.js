@@ -27,18 +27,18 @@ return(
    
    <div className ="mt-20">
 
- {subscribe.lenget>0&& subscribe.map((post)=>(<div className="card card-side bg-base-100 w-[30rem] h-[32] ml-[47rem]  shadow-lg shadow-[#9089FC]">
+ {subscribe.length>0&& subscribe.map((post)=>(<div className="card card-side bg-base-100 w-[30rem] h-[32] 2xl:ml-[40rem] ml-[18rem] mt-10 shadow-lg shadow-[#9089FC]">
   <figure>
   <div class="avatar">
-  <div class="w-24 mask mask-squircle ">
-    <img src="https://static.wikia.nocookie.net/onepiece/images/5/56/Tama_Eating_Oshiruko.png/revision/latest?cb=20210301010505" />
+  <div class="w-24 ml-3 mask mask-squircle ">
+    <img src={post.channelprofile} />
   </div>
 </div>
   </figure>
   <div className="card-body flex justify-evenly">
-    <h2 className="card-title">channelname</h2>
-    <p>description </p>
-    <button className={Getbtn.btn}>subscribe</button>
+    <h2 className="card-title">{post.channelname}</h2>
+    <p>{} </p>
+    <p className={Getbtn.btn}>{(post.join)?("you have joined this channel "):  ("you haven't joined the channel")}</p>
     {/* <div className="card-actions justify-end">
       <button className="btn btn-primary">Listen</button>
     </div> */}
