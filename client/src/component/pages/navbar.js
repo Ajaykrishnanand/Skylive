@@ -115,11 +115,14 @@ const Navbar = () => {
               </div>
             </div>
             <div className="form-control    ">
-              <input
+            <Link to="/search">
+              <input 
                 type="text"
                 placeholder="Search"
                 className="input bg-transparant border-white  w-[40rem] border-2 rounded-full   "
+
               />
+              </Link>
             </div>
             <div className="  lg:block">
               <ul className="menu menu-horizontal">
