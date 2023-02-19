@@ -11,12 +11,12 @@ const Postcard = (props) => {
     try {
       const { data } = await axios.get("https://dummyjson.com/products");
       const videoList = await axios.post(
-        "http://localhost:8081/Videos/all",
+        "https://skylive.onrender.com/Videos/all",
         data
       );
-
+      // http://localhost:8081
       const Livelist = await axios.post(
-        "http://localhost:8081/Lives/all",
+        "https://skylive.onrender.com/Lives/all",
         data
       );
       setLivelist(Livelist.data);
