@@ -14,13 +14,13 @@ const Dashbord = () => {
       address: adress,
     };
     const dataforchannel = await axios.post(
-      "http://localhost:8081/Creaters/adress",
+      "https://skylive.onrender.com/Creaters/adress",
       data
     );
     console.log(dataforchannel);
     console.log(Channel);
     const videoList = await axios.post(
-      "http://localhost:8081/Videos/adress",
+      "https://skylive.onrender.com/Videos/adress",
       data
     );
     console.log(videoList);
