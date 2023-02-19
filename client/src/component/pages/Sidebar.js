@@ -81,6 +81,19 @@ const Sidebar = () => {
               </div>
               </Link>
             </li>
+            <li className="p-1">
+              <Link
+                style={{ marginRight: "20px" }}
+                exact
+                className="ring-2 mt-4 ring-white rounded-xl"
+                to="/subscribes"
+                onClick={setVisible}
+              >
+               <div className={cosbtn.gradientt}>
+              total following
+              </div>
+              </Link>
+            </li>
           </ul>
         </div>
       )}

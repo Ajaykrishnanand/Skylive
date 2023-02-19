@@ -48,7 +48,7 @@ const Dashbord = () => {
             <div className=" flex ml-20   ">
               <div>
                 <div className="avatar 2xl:ml-20  ml-10">
-                  <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <div className="w-24 rounded-full ring ring-offset-base-100 ring-offset-2">
                     <img src={videoData.channelprofile} />
                   </div>
                 </div>
@@ -66,6 +66,9 @@ const Dashbord = () => {
               <div
                 className={Dashbtn.btn}
                 onClick={() => {
+                  if(aboutflag){
+                    setSboutflag(false)
+                  }
                   if (flag) {
                     setFlag(false);
                   } else {
@@ -96,6 +99,7 @@ const Dashbord = () => {
                 <h4
                   className={Dashbtn.btn}
                   onClick={() => {
+                    setFlag(false)
                     setSboutflag(!aboutflag);
                     setTimeout(() => {
                       console.log(aboutflag);
