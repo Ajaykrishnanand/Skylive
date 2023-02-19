@@ -31,7 +31,7 @@ function PlayerComponent() {
     };
     console.log(data);
     const datais = await axios.post(
-      "http://localhost:8081/Subscribe/check",
+      "https://skylive.onrender.com/Subscribe/check",
       data
     );
     console.log(datais);
@@ -44,14 +44,14 @@ function PlayerComponent() {
       playerid: playerID,
     };
     try {
-      const datais = await axios.post("http://localhost:8081/Lives/id", data);
+      const datais = await axios.post("https://skylive.onrender.com/Lives/id", data);
       setVideodata(datais.data[0]);
       console.log(datais.data[0]);
       const thisdata = {
         adress: id,
       };
       const channaldata = await axios.post(
-        "http://localhost:8081/Creaters/adress",
+        "https://skylive.onrender.com/Creaters/adress",
         thisdata
       );
       setChannel(channaldata.data[0]);
@@ -74,7 +74,7 @@ function PlayerComponent() {
         };
         await ctx.sharedState.createNewFlow(channel.address, "100");
         const check = await axios.post(
-          "http://localhost:8081/Subscribe/join",
+          "https://skylive.onrender.com/Subscribe/join",
           data
         );
         setJoinflag(false);
@@ -87,7 +87,7 @@ function PlayerComponent() {
         };
         await ctx.sharedState.deleteExistingFlow(id);
         const check = await axios.post(
-          "http://localhost:8081/Subscribe/join",
+          "https://skylive.onrender.com/Subscribe/join",
           data
         );
         setJoinflag(true);
@@ -107,7 +107,7 @@ function PlayerComponent() {
     try {
       if (subscribeflag) {
         const datais = await axios.post(
-          "http://localhost:8081/Subscribe",
+          "https://skylive.onrender.com/Subscribe",
           data
         );
         setsubscribeflag(false);
@@ -119,7 +119,7 @@ function PlayerComponent() {
           channelAdress: id,
         };
         const datais = await axios.post(
-          "http://localhost:8081/Subscribe/unsubscribe",
+          "https://skylive.onrender.com/Subscribe/unsubscribe",
           data
         );
         setsubscribeflag(true);
