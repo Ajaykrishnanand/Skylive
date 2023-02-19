@@ -11,7 +11,7 @@ function Subscriberpage() {
       address: address,
     };
     const datais = await axios.post(
-      "http://localhost:8081/Subscribe/adress",
+      "https://skylive.onrender.com/Subscribe/adress",
       data
     );
     setSubscribe(datais.data);
