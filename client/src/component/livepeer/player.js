@@ -1,5 +1,6 @@
 import { Player } from "@livepeer/react";
 import btnscss from "./player.module.scss";
+import { Link } from "react-router-dom";
 
 import { useHref, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
@@ -165,7 +166,10 @@ function PlayerComponent() {
                 <img src={channel.channelprofile} />
               </div>
             </div>
-            <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
+            <Link to={"/creater/" + channel.address}>
+              {" "}
+              <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
+            </Link>
 
             <button
               className={btnscss.btn}
