@@ -44,7 +44,7 @@ const Dashbord = () => {
     <>
       <div>
         {Channel.map((videoData) => (
-          <div className=" component 2xl:ml-36 w-[66rem] 2xl:w-[100rem]   mt-36 ml-20 overflow-hidden  ">
+          <div className=" component 2xl:ml-36 2xl:w-[100rem] w-[66rem]  mt-36 ml-20  ">
             {/* border-b-2   className=" pt-20  pl-40*/}
             <img
               src={videoData.channelbackground}
