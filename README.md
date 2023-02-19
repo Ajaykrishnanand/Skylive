@@ -14,7 +14,7 @@
         </a>
         <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
        
-        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+    
         <a href="https://github.com/Ajay12-p/Skylive/issues">
             🔎 Issues
         </a>
