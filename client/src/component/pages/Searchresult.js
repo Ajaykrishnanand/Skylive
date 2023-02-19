@@ -10,7 +10,7 @@ const Postcard = (props) => {
     try {
       const { data } = await axios.get("https://dummyjson.com/products");
       const videoList = await axios.post(
-        "http://localhost:8081/search",
+        "https://skylive.onrender.com/search",
         data
       );
       const list = videoList.data;
