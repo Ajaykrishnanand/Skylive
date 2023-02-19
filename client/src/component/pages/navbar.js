@@ -3,10 +3,11 @@ import Login from "./Login";
 import { Link } from "react-router-dom";
 import Path from "../routes/path";
 import { accContext } from "../context/ApplicationContext";
-
+import Navv from "./navbar.module.scss"
 import { ethers } from "ethers"
 
 const Navbar = () => {
+  const[navbarcss,setNavbarcss]= useState(false)
   const ctx = useContext(accContext);
   // const visible = ctx.sharedState.sidebar;
   // const setVisible = ctx.sharedState.setSidebar;
@@ -30,9 +31,17 @@ const Navbar = () => {
     }
   };
   console.log(accountAddress);
-
+  const changebackground =()=>{
+    if(window.scrollY>=10){
+      setNavbarcss(true)
+    }
+    else{
+      setNavbarcss(false)
+    }
+    window.addEventListener("scroll",changebackground)
+  }
   return (
-    <>
+    <>  <div className={navbarcss?(Navv.navv):(Navv.navvv)}>
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
         <svg
           className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
@@ -145,6 +154,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
