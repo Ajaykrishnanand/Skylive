@@ -172,38 +172,38 @@ function PlayerComponent() {
             </Link>
 
             {(subscribeflag)?( <button
-              className={btnscss.btnc}
-              onClick={() => {
-                handlesubscribe();
-              }}
-            >
-           unsubscribe
-            </button>):(<button
               className={btnscss.btn}
               onClick={() => {
                 handlesubscribe();
               }}
             >
-            subscribe 
+             subscribe
+            </button>):(<button
+              className={btnscss.btnc}
+              onClick={() => {
+                handlesubscribe();
+              }}
+            >
+            unsubscribe 
             </button>)}
 
           {joinflag ?(<button
-            className={btnscss.btnc}
-            onClick={() => {
-              handaleJoin();
-            }}
-          >
-            {" "}
-          joined
-          </button>)
-           :  (<button
             className={btnscss.btn}
             onClick={() => {
               handaleJoin();
             }}
           >
             {" "}
-           join
+          join
+          </button>)
+           :  (<button
+            className={btnscss.btnc}
+            onClick={() => {
+              handaleJoin();
+            }}
+          >
+            {" "}
+           joined
           </button>)}
           </div>
 
