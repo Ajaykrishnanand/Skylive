@@ -36,7 +36,7 @@ const Postcard = (props) => {
         {allvideos &&
           allvideos.length > 0 &&
           allvideos.map((post) => (
-            <Link to={"/player/" + post.playerid}>
+            <Link to={"/player/" + post.playerid + "/" + post.address}>
               <div className=" p-8 	">
                 <div className="card card-compact w-60 h-60 shadow-2xl  ">
                   <figure className="h-full">

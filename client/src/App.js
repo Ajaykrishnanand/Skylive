@@ -17,50 +17,47 @@ import { providers } from "ethers";
 
 const provider = new AuthProvider("b373797fae6275c96ac63108a0733bf78ac1863f");
 
-
 const client = createReactClient({
   provider: studioProvider({ apiKey: "55b8d283-5a19-4dc0-b6c6-3ac3f00dbd29" }),
 });
 function App() {
-  const [flag ,setFlag] = useState(false)
+  const [flag, setFlag] = useState(false);
   const ctx = useContext(accContext);
   const signer = null;
-  const arcanaAuth=async ()=>{
+  const arcanaAuth = async () => {
     try {
-      await provider.init()
-  
-      const arcanaProvider = provider.loginWithSocial('google')
-      const info = await provider.getUser()
-      console.log(info)
-      const isloggedIn = await provider.isLoggedIn()
-      if(isloggedIn){
-        setFlag(true)
-      }
-       
-    } catch (e) {
-  console.log(e)
-    }
-  }
-  const externalWallet =()=>{
-    const external=async()=>{
-    try {
-      const accounts = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      ctx.sharedState.setData(provider, signer, accounts[0]);
-      if(accounts[0]!==null){
+      await provider.init();
+
+      const arcanaProvider = provider.loginWithSocial("google");
+      const info = await provider.getUser();
+      console.log(info);
+      const isloggedIn = await provider.isLoggedIn();
+      if (isloggedIn) {
         setFlag(true);
       }
     } catch (e) {
       console.log(e);
     }
-  }
-  external();
-  }
-  
-  
+  };
+  const externalWallet = () => {
+    const external = async () => {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        ctx.sharedState.setData(provider, signer, accounts[0]);
+        if (accounts[0] !== null) {
+          setFlag(true);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    external();
+  };
+
   return (
     <Wrapper>
       <div class="isolate bg-white static">
@@ -90,37 +87,38 @@ function App() {
             </defs>
           </svg>
         </div>
-      {(flag)&& ( <div className=" flex   ">
-          <LivepeerConfig client={client}>
-            {" "}
-            <div>
-              <Navbar />
-            </div>
-            <div className="mr-2 flex justify-start">
-              <Sidebar />
-            </div>
-            <div className="ml-3  flex justify-center">
+        {flag && (
+          <div className=" flex   ">
+            <LivepeerConfig client={client}>
               {" "}
-              <Path />
+              <div>
+                <Navbar />
+              </div>
+              <div className="mr-2 flex justify-start">
+                <Sidebar />
+              </div>
+              <div className="ml-3  flex justify-center">
+                {" "}
+                <Path />
+              </div>
+            </LivepeerConfig>
+          </div>
+        )}
+      </div>
+      {flag === false && (
+        <ProvideAuth provider={provider}>
+          <div>
+            <div className="pt-40">
+              <Auth
+                onClick={externalWallet}
+                className="outline"
+                onLogin={arcanaAuth}
+              />
             </div>
-          </LivepeerConfig>
-        </div>)}
-      </div>
-      {(flag===false)&&(<ProvideAuth provider={provider}>
-      
-      <div>
-        <div className="pt-40">
-          <Auth
-          onClick={ externalWallet}
-            className="outline"
-            onLogin={ arcanaAuth}
-          
-          />
-        </div>
-      </div>
-    </ProvideAuth>)}
+          </div>
+        </ProvideAuth>
+      )}
     </Wrapper>
-   
   );
 }
 

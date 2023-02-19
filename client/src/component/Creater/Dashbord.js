@@ -114,7 +114,7 @@ const Dashbord = () => {
         <div className="grid col-span-2 2xl:pl-60  pl-20  grid-cols-3 2xl:grid-cols-5 place-content-center  divide-y  gap-4">
           {flag &&
             videoData.map((post) => (
-              <Link to={"/player/" + post.playerid}>
+              <Link to={"/player/" + post.playerid + "/" + post.address}>
                 <div className=" p-8 	">
                   <div className="card card-compact w-60 h-60 shadow-2xl  ">
                     <figure className="h-full">

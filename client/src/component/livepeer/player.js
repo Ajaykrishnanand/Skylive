@@ -2,15 +2,19 @@ import { Player } from "@livepeer/react";
 import btnscss from "./player.module.scss";
 
 import { useHref, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { accContext } from "../context/ApplicationContext";
 import axios from "axios";
 function PlayerComponent() {
+  const ctx = useContext(accContext);
+
   const [videodata, setVideodata] = useState({});
   const [channel, setChannel] = useState([]);
-  const [joinflag, setJoinflag]= useState(true);
-  const [subscribeflag, setsubscribeflag]= useState(true);
+  const [joinflag, setJoinflag] = useState(true);
+  const [subscribeflag, setsubscribeflag] = useState(true);
 
-  const { playerID } = useParams();
+  const { playerID, id } = useParams();
+  const accountAddress = ctx.sharedState.acclogin.accountAddress;
   console.log(playerID);
   const PosterImage = () => {
     return (
@@ -19,6 +23,20 @@ function PlayerComponent() {
       </div>
     );
   };
+  async function Checksubscription() {
+    const data = {
+      myaddress: accountAddress,
+      channelAdress: id,
+    };
+    console.log(data);
+    const datais = await axios.post(
+      "http://localhost:8081/Subscribe/check",
+      data
+    );
+    console.log(datais);
+    setsubscribeflag(!datais.data.flag);
+    setJoinflag(!datais.data.join);
+  }
 
   async function checkalldetails() {
     const data = {
@@ -36,13 +54,80 @@ function PlayerComponent() {
         thisdata
       );
       setChannel(channaldata.data[0]);
+      setTimeout(() => {
+        Checksubscription();
+      }, 100);
+
       console.log(channaldata.data[0]);
     } catch (e) {
       console.log(e);
     }
   }
-
-  function handlesubscribe() {}
+  async function handaleJoin() {
+    try {
+      if (joinflag) {
+        const data = {
+          myaddress: accountAddress,
+          channelAdress: id,
+          flag: true,
+        };
+        await ctx.sharedState.createNewFlow(channel.address, "100");
+        const check = await axios.post(
+          "http://localhost:8081/Subscribe/join",
+          data
+        );
+        setJoinflag(false);
+        console.log(check);
+      } else {
+        const data = {
+          myaddress: accountAddress,
+          channelAdress: id,
+          flag: false,
+        };
+        await ctx.sharedState.deleteExistingFlow(id);
+        const check = await axios.post(
+          "http://localhost:8081/Subscribe/join",
+          data
+        );
+        setJoinflag(true);
+        console.log(check);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  async function handlesubscribe() {
+    const data = {
+      channelname: channel.channelname,
+      channelprofile: channel.channelprofile,
+      channelAdress: channel.address,
+      myaddress: accountAddress,
+    };
+    try {
+      if (subscribeflag) {
+        const datais = await axios.post(
+          "http://localhost:8081/Subscribe",
+          data
+        );
+        setsubscribeflag(false);
+        console.log(datais);
+      } else {
+        alert("unsubscribing");
+        const data = {
+          myaddress: accountAddress,
+          channelAdress: id,
+        };
+        const datais = await axios.post(
+          "http://localhost:8081/Subscribe/unsubscribe",
+          data
+        );
+        setsubscribeflag(true);
+        console.log(data);
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
   useEffect(() => {
     checkalldetails();
   }, [playerID]);
@@ -54,6 +139,23 @@ function PlayerComponent() {
           title={videodata.title}
           playbackId={playerID}
           poster={<PosterImage />}
+          theme={{
+            borderStyles: {
+              containerBorderStyle: "hidden",
+            },
+            colors: {
+              accent: "#ebcdf7",
+            },
+            space: {
+              controlsBottomMarginX: "10px",
+              controlsBottomMarginY: "5px",
+              controlsTopMarginX: "15px",
+              controlsTopMarginY: "10px",
+            },
+            radii: {
+              containerBorderRadius: "0px",
+            },
+          }}
         />
         <div className="flex pt-4 pl-[2px] ">{videodata.title} </div>
         <div className="flex justify-evenly  mt-10  bg-base-200 rounded-box">
@@ -65,35 +167,24 @@ function PlayerComponent() {
             </div>
             <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
 
-       <button
+            <button
               className={btnscss.btn}
               onClick={() => {
-                if(subscribeflag){
-                  setsubscribeflag(false)
-                }else{
-                 setsubscribeflag(true)
-                }
+                handlesubscribe();
               }}
             >
-           { (subscribeflag) ? ( " subscribe"):(" unsubscribe")}
+              {subscribeflag ? " subscribe" : " unsubscribe"}
             </button>
-           
 
-       <button
+            <button
               className={btnscss.btn}
               onClick={() => {
-                if(joinflag){
-               setJoinflag(false)
-                }else{
-                setJoinflag(true)
-                }
-              }
-              }
+                handaleJoin();
+              }}
             >
               {" "}
-              { (joinflag) ? (  "join"):(" joined")}{" "}
+              {joinflag ? "join" : " joined"}{" "}
             </button>
-          
           </div>
 
           <div className="mt-9 mr-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
@@ -115,11 +206,15 @@ function PlayerComponent() {
         </div>
       </div>
       <div className="col-span-3 2xl:ml-10 ml-4 ">
-        <div>ads</div>
-        <img
-          src="https://i.dummyjson.com/data/products/2/thumbnail.jpg"
-          className=" h-96 w-auto "
-        ></img>
+        {joinflag && (
+          <div>
+            ads
+            <img
+              src="https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+              className=" h-96 w-auto "
+            ></img>
+          </div>
+        )}
       </div>
     </div>
   );

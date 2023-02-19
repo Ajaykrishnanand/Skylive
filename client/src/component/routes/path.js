@@ -19,7 +19,7 @@ const Path = () => {
 
       <Route exact path="/user" element={<User />} />
       <Route exact path="/upload" element={<Upload />} />
-      <Route exact path="/player/:playerID" element={<Player />} />
+      <Route exact path="/player/:playerID/:id" element={<Player />} />
       <Route exact path="/creater" element={<Creater />} />
       <Route exact path="/uploadcard" element={<Uploadcard />} />
       <Route exact path="/live" element={<Live />} />
