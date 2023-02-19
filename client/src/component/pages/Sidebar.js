@@ -41,7 +41,7 @@ const Sidebar = () => {
               </Link>
             </li>
 
-            <li className="p-1">
+            {/* <li className="p-1">
               <Link
                 style={{ marginRight: "20px" }}
                 exact
@@ -53,7 +53,7 @@ const Sidebar = () => {
              Player
               </div>
               </Link>
-            </li>
+            </li> */}
 
             <li className="p-1">
               <Link
@@ -86,7 +86,7 @@ const Sidebar = () => {
                 style={{ marginRight: "20px" }}
                 exact
                 className="ring-2 mt-4 ring-white rounded-xl"
-                to="/subscribes"
+                to="/subscribers"
                 onClick={setVisible}
               >
                <div className={cosbtn.gradientt}>
