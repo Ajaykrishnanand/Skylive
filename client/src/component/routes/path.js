@@ -12,6 +12,7 @@ import Sorts from "../livepeer/Sorts";
 import OBS from "../livepeer/LiveOBS";
 import Camera from "../livepeer/cameralive";
 import UserCreater from "../User/Creater";
+import Subscriberpage from "../pages/Subscriberpage";
 const Path = () => {
   return (
     <Routes>
@@ -29,6 +30,7 @@ const Path = () => {
       <Route exact path="/obs" element={<OBS />} />
       <Route exact path="/camera" element={<Camera />} />
       <Route exact path="/userCreater" element={<UserCreater />} />
+      <Route exact path="/subscribers" element={<Subscriberpage />} />
     </Routes>
   );
 };
