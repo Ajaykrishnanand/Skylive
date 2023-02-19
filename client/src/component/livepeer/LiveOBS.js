@@ -63,7 +63,7 @@ function LiveStreaming() {
         free: freeflag,
       };
 
-      const datais = await axios.post("http://localhost:8081/Lives", dataf);
+      const datais = await axios.post("https://skylive.onrender.com/Lives", dataf);
       console.log(datais);
       setPlaybackId(ans.data.playbackId);
       setStreamKey(ans.data.streamKey);
