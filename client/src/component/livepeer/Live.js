@@ -22,7 +22,6 @@ function LiveStreaming() {
             className="btn btn-ghost"
             onClick={() => {
               navigate("/camera");
-              alert("your livestream is going to be record");
             }}
             style={{ width: "190px" }}
           >
@@ -32,7 +31,6 @@ function LiveStreaming() {
             className="btn btn-ghost"
             onClick={() => {
               navigate("/obs");
-              alert("your livestream is going to be record");
             }}
             style={{ width: "190px" }}
           >

@@ -12,7 +12,9 @@ function Main() {
   const [video, setVideo] = useState("");
   const thumbnailRef = useRef("");
   const TitleInputRef = useRef();
-  const channel = ctx.sharedState.channel;
+  const Channel = ctx.sharedState.channel;
+  const profile = Channel[0].channelprofile;
+  console.log(profile);
   const descriptionInputRef = useRef();
   const Uploadall = async (videos) => {
     const url = videos.substring(62);
@@ -22,10 +24,12 @@ function Main() {
       thumbnail: thumbnailRef.current.value,
       playerid: url,
       totalview: "0",
-      createrprofile: channel.channelprofile,
+      Profile: profile,
       free: flag,
+      fweoihf: "fwkjeojrfw",
       title: TitleInputRef.current.value,
     };
+    console.log(data);
     console.log(data);
     try {
       const response = await axios.post("http://localhost:8081/Videos", data);

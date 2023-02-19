@@ -59,7 +59,7 @@ function LiveStreaming() {
         playerid: ans.data.playbackId,
         title: name.current.value,
         totalview: "0",
-        createrprofile: channel.channelprofile,
+        createrprofile: channel[0].channelprofile,
         free: freeflag,
       };
 
@@ -67,6 +67,7 @@ function LiveStreaming() {
       console.log(datais);
       setPlaybackId(ans.data.playbackId);
       setStreamKey(ans.data.streamKey);
+      alert("your streamKey for obs " + ans.data.streamKey);
 
       console.log(ans.data.streamKey);
     } catch (err) {
@@ -152,20 +153,26 @@ function LiveStreaming() {
                 }}
               />{" "}
               <span className="label-text">
-                Check this box if you want to reacord the live streem
+                Check this box if you want to make this stream free
               </span>
             </label>
           </div>
-          <button
-            className="btn btn-ghost"
-            onClick={() => {
-              setFlag(true);
-              alert("your livestream is going to be record");
-            }}
-            style={{ width: "190px" }}
-          >
-            click to record
-          </button>
+          <div className="form-control pt-5">
+            <label className="label cursor-pointer">
+              <input
+                type="checkbox"
+                className="checkbox checkbox-primary mr-2"
+                onClick={() => {
+                  setFlag(true);
+                  alert("your livestream is going to be record");
+                }}
+              />{" "}
+              <span className="label-text">
+                Check this box if you want to record this stream
+              </span>
+            </label>
+          </div>
+
           <button
             className="btn btn-ghost"
             onClick={() => {

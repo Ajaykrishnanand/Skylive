@@ -37,7 +37,7 @@ function Subscriberpage() {
               <div className="card-body flex justify-evenly">
                 <h2 className="card-title">{post.channelname}</h2>
                 <p>{} </p>
-                <p className={Getbtn.btn}>
+                <p className={post.join ? Getbtn.btnc : Getbtn.btn}>
                   {post.join
                     ? "you have joined this channel "
                     : "you haven't joined the channel"}
