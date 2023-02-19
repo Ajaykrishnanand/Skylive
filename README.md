@@ -70,4 +70,5 @@ you have to need your own dotenv file for mongodb
 ```
 ## Demo
 
- link to demo
+ link to demo 
+  <a href="https://skylive-peach.vercel.app/" target="_blank">https://skylive-peach.vercel.app/</a>
