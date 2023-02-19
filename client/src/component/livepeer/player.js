@@ -171,24 +171,40 @@ function PlayerComponent() {
               <div className="mr-4 mt-9 ml-7">{channel.channelname}</div>
             </Link>
 
-            <button
+            {(subscribeflag)?( <button
+              className={btnscss.btnc}
+              onClick={() => {
+                handlesubscribe();
+              }}
+            >
+           unsubscribe
+            </button>):(<button
               className={btnscss.btn}
               onClick={() => {
                 handlesubscribe();
               }}
             >
-              {subscribeflag ? " subscribe" : " unsubscribe"}
-            </button>
+            subscribe 
+            </button>)}
 
-            <button
-              className={btnscss.btn}
-              onClick={() => {
-                handaleJoin();
-              }}
-            >
-              {" "}
-              {joinflag ? "join" : " joined"}{" "}
-            </button>
+          {joinflag ?(<button
+            className={btnscss.btnc}
+            onClick={() => {
+              handaleJoin();
+            }}
+          >
+            {" "}
+          joined
+          </button>)
+           :  (<button
+            className={btnscss.btn}
+            onClick={() => {
+              handaleJoin();
+            }}
+          >
+            {" "}
+           join
+          </button>)}
           </div>
 
           <div className="mt-9 mr-4 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
