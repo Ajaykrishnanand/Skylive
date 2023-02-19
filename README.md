@@ -29,9 +29,7 @@
 
 
 Clone this repository:
-## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
 
 
 ## Run Locally
@@ -49,28 +47,27 @@ Go to the project directory
   cd client
 
 ```
+## server
 ```bash
-    and get the server part from here
+get the server part from here
 ```
  <a href="https://github.com/Trymbakmahant/SkyLine_SERVER/" target="_blank">(https://github.com/Trymbakmahant/SkyLine_SERVER)</a>
-
 
 Install dependencies
 
 ```bash
   do "npm install" 
 ```
-
-Start the server
+Start the client
 &
-start the client 
+start the server
 ```bash
   npm start
 ```
-
-
-
-
+## note
+```bash
+you have to need your own dotenv file for mongodb 
+```
 ## Demo
 
  link to demo
