@@ -21,7 +21,7 @@ const client = createReactClient({
   provider: studioProvider({ apiKey: "55b8d283-5a19-4dc0-b6c6-3ac3f00dbd29" }),
 });
 function App() {
-  const [flag, setFlag] = useState(true);
+  const [flag, setFlag] = useState(false);
   const ctx = useContext(accContext);
   const signer = null;
   const arcanaAuth = async () => {
