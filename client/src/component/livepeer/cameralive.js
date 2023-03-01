@@ -34,17 +34,20 @@ function App() {
   const UploadLiveStream = async () => {
     const data = {
       address: adress,
+      description: Discription.current.value,
+      thumbnail: Thumbnail.current.value,
       playerid: playbackId,
-      thumbnail: Thumbnail,
-      description: Discription,
-      title: name,
-      createrprofile: channel.channelprofile,
+      title: name.current.value,
       totalview: "0",
+      createrprofile: channel[0].channelprofile,
       free: freeflag,
     };
     console.log(data);
     try {
-      const datais = await axios.post("https://skylive.onrender.com/Lives", data);
+      const datais = await axios.post(
+        "https://skylive.onrender.com/Lives",
+        data
+      );
     } catch (e) {
       console.log(e);
     }
@@ -125,95 +128,95 @@ function App() {
   return (
     <>
       <div className="App flex place-items-center ">
-      <div className={LiveButton.back}>
-        <div className="2xl:ml-[650px] mt-[5rem] border-[7px] border-dotted bg-base-200 rounded-lg ml-[90px] ">
-          <video className="App-video rounded-xl " ref={videoEl} />
-          <div className="flex justify-evenly pt-10">
-            <div>
-              <label className="label">
-                <span className="label-text pl-2"> Video-Title</span>
-              </label>
-              <input
-                type="text"
-                className="input input-bordered  border-base-200 input-info w-full max-w-xs"
-                placeholder="Name"
-                ref={name}
-                required
-              />
-              <hr></hr>
-            </div>
-            <div>
-              <label className="label">
-                <span className="label-text pl-2">Discription</span>
-              </label>
-              <input
-                type="text"
-                className="input input-bordered border-base-200 input-info w-full max-w-xs"
-                placeholder="Discription"
-                ref={Discription}
-                required
-              />
-              <hr></hr>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label className="label">
-                <span className="label-text pl-2">Thumbnail</span>
-              </label>
-              <input
-                type="text"
-                className="input input-bordered border-base-200 input-info w-full max-w-xs"
-                placeholder="Thumbnail"
-                ref={Thumbnail}
-                required
-              />
-              <hr></hr>
-            </div>
-            <div>
-              <label className="label">
-                <span className="label-text pl-2 ">Video</span>
-              </label>
-            </div>
-            <div className="form-control pt-5">
-              <label className="label cursor-pointer">
+        <div className={LiveButton.back}>
+          <div className="2xl:ml-[650px] mt-[5rem] border-[7px] border-dotted bg-base-200 rounded-lg ml-[90px] ">
+            <video className="App-video rounded-xl " ref={videoEl} />
+            <div className="flex justify-evenly pt-10">
+              <div>
+                <label className="label">
+                  <span className="label-text pl-2"> Video-Title</span>
+                </label>
                 <input
-                  type="checkbox"
-                  className="checkbox checkbox-primary "
-                  onClick={() => {
-                    setFreeflag(!freeflag);
-                    console.log(freeflag + "hofwehfoaefhoh");
-                  }}
-                />{" "}
-                <span className="label-text text-primary ">
-                  Check this box if you want to do private live stream
-                </span>
-              </label>
-            </div>
-            <div className="form-control pt-5">
-              <label className="label cursor-pointer">
+                  type="text"
+                  className="input input-bordered  border-base-200 input-info w-full max-w-xs"
+                  placeholder="Name"
+                  ref={name}
+                  required
+                />
+                <hr></hr>
+              </div>
+              <div>
+                <label className="label">
+                  <span className="label-text pl-2">Discription</span>
+                </label>
                 <input
-                  type="checkbox"
-                  className="checkbox checkbox-primary "
-                  onClick={() => {
-                    setFlag(!flag);
-                  }}
-                />{" "}
-                <span className="label-text">
-                  Check this box if you want to record your Live stream
-                </span>
-              </label>
+                  type="text"
+                  className="input input-bordered border-base-200 input-info w-full max-w-xs"
+                  placeholder="Discription"
+                  ref={Discription}
+                  required
+                />
+                <hr></hr>
+              </div>
             </div>
+            <div>
+              <div>
+                <label className="label">
+                  <span className="label-text pl-2">Thumbnail</span>
+                </label>
+                <input
+                  type="text"
+                  className="input input-bordered border-base-200 input-info w-full max-w-xs"
+                  placeholder="Thumbnail"
+                  ref={Thumbnail}
+                  required
+                />
+                <hr></hr>
+              </div>
+              <div>
+                <label className="label">
+                  <span className="label-text pl-2 ">Video</span>
+                </label>
+              </div>
+              <div className="form-control pt-5">
+                <label className="label cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-primary "
+                    onClick={() => {
+                      setFreeflag(!freeflag);
+                      console.log(freeflag + "hofwehfoaefhoh");
+                    }}
+                  />{" "}
+                  <span className="label-text text-primary ">
+                    Check this box if you want to do private live stream
+                  </span>
+                </label>
+              </div>
+              <div className="form-control pt-5">
+                <label className="label cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-primary "
+                    onClick={() => {
+                      setFlag(!flag);
+                    }}
+                  />{" "}
+                  <span className="label-text">
+                    Check this box if you want to record your Live stream
+                  </span>
+                </label>
+              </div>
 
-            <button
-              className={`btn bg-white text-black border-base-200 `}
-              onClick={handlestart}
-              style={{ marginTop: "7%" }}
-            >
-              start your live stream
-            </button>
+              <button
+                className={`btn bg-white text-black border-base-200 `}
+                onClick={handlestart}
+                style={{ marginTop: "7%" }}
+              >
+                start your live stream
+              </button>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </>
